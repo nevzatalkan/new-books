@@ -122,22 +122,31 @@ def fetch_openlibrary_description(title: str, author: str) -> str:
 # ── Groq AI ────────────────────────────────────────────────────────────────────
 
 def enhance_with_groq(title: str, author: str, google_desc: str,
-                      ol_desc: str, groq_client) -> str:
-    """Groq ile kitap özetini Türkçe olarak zenginleştirir."""
+                      ol_desc: str, groq_client) -> dict | None:
+    """
+    Groq ile kitap bilgilerini zenginleştirir.
+    {"topics": ["...", "..."], "audience": "..."} formatında dict döner.
+    Hata durumunda None döner.
+    """
     source_text = ""
     if google_desc:
         source_text += f"Google Books açıklaması: {google_desc}\n"
     if ol_desc:
         source_text += f"Open Library açıklaması: {ol_desc}\n"
-
     if not source_text:
         source_text = "Bu kitap hakkında kaynak bilgi bulunmuyor."
 
     prompt = (
         f"Kitap: \"{title}\" — Yazar: {author}\n\n"
         f"{source_text}\n"
-        "Yukarıdaki bilgileri kullanarak bu kitap hakkında Türkçe, akıcı ve bilgilendirici "
-        "2-3 cümlelik bir özet yaz. Sadece özeti yaz, başka bir şey ekleme."
+        "Yukarıdaki bilgileri kullanarak aşağıdaki JSON formatında Türkçe yanıt ver:\n"
+        "{\n"
+        "  \"topics\": [\"konu 1\", \"konu 2\", \"konu 3\"],\n"
+        "  \"audience\": \"Bu kitap ... için idealdir.\"\n"
+        "}\n\n"
+        "- topics: kitabın 2-4 ana konu başlığı (kısa, madde madde)\n"
+        "- audience: bu kitabın kime hitap ettiği (1 cümle)\n"
+        "Sadece JSON yaz, başka hiçbir şey ekleme."
     )
 
     try:
@@ -145,18 +154,23 @@ def enhance_with_groq(title: str, author: str, google_desc: str,
             model=GROQ_MODEL,
             messages=[{"role": "user", "content": prompt}],
             max_tokens=200,
-            temperature=0.5,
+            temperature=0.4,
+            response_format={"type": "json_object"},
         )
-        return response.choices[0].message.content.strip()
+        raw = response.choices[0].message.content.strip()
+        parsed = json.loads(raw)
+        if "topics" in parsed and "audience" in parsed:
+            return parsed
+        return None
     except Exception as exc:
         print(f"[WARN] Groq hatası ({title}): {exc}")
-        return ""
+        return None
 
 
 def enrich_book(book: dict, groq_client) -> dict:
     """
-    Bir kitabın açıklamasını zenginleştirir.
-    Öncelik: Groq (Google + OL kaynak) → Open Library → Google Books
+    Bir kitabın bilgilerini zenginleştirir.
+    Öncelik: Groq (topics+audience) → Open Library fallback → Google Books
     """
     title = book["title"]
     author = book["authors"]
@@ -169,13 +183,15 @@ def enrich_book(book: dict, groq_client) -> dict:
         if ol_desc:
             print(f"[INFO]   Open Library açıklaması bulundu: {title}")
 
-    # 2) Groq ile zenginleştir
+    # 2) Groq ile zenginleştir (topics + audience)
     if groq_client:
-        enhanced = enhance_with_groq(title, author, google_desc, ol_desc, groq_client)
-        if enhanced:
-            return {**book, "description": enhanced, "description_source": "groq"}
+        enriched = enhance_with_groq(title, author, google_desc, ol_desc, groq_client)
+        if enriched:
+            return {**book, "topics": enriched["topics"],
+                    "audience": enriched["audience"],
+                    "description_source": "groq"}
 
-    # 3) Open Library fallback (Groq yoksa veya başarısızsa)
+    # 3) Open Library fallback
     if ol_desc:
         truncated = ol_desc[:400] + ("…" if len(ol_desc) > 400 else "")
         return {**book, "description": truncated, "description_source": "openlibrary"}
@@ -204,9 +220,21 @@ def format_book(book: dict) -> str:
         + rating_str
         + source_badge
     )
-    if book["description"]:
+
+    # Groq: konu başlıkları + kimler için
+    if book.get("topics"):
+        lines.append("")
+        for topic in book["topics"]:
+            lines.append(f"- {topic}")
+    if book.get("audience"):
+        lines.append("")
+        lines.append(f"**Kimler için?** {book['audience']}")
+
+    # Fallback: düz açıklama (OL veya Google)
+    elif book.get("description"):
         lines.append("")
         lines.append(book["description"])
+
     lines.append("")
     return "\n".join(lines)
 
