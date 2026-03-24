@@ -1,0 +1,35 @@
+name: Goodreads Haftalık Özet
+
+on:
+  # Her Pazartesi saat 08:00 UTC'de çalışır
+  schedule:
+    - cron: "0 8 * * 1"
+
+  # Manuel tetikleme (test için)
+  workflow_dispatch:
+
+jobs:
+  send-digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Kodu al
+        uses: actions/checkout@v4
+
+      - name: Python'u kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Bağımlılıkları yükle
+        run: pip install -r requirements.txt
+
+      - name: Digest'i gönder
+        env:
+          GOODREADS_RSS_URL: ${{ secrets.GOODREADS_RSS_URL }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
+        run: python src/digest.py

@@ -1,0 +1,96 @@
+# Goodreads Digest - Kategori Konfigürasyonu
+#
+# Her kategori için:
+#   name:    E-postada görünecek başlık
+#   shelves: Goodreads raf etiketleri (küçük harf, tire ile)
+#   active:  true  → bu hafta digeste dahil edilir
+#            false → tanımlı ama şimdilik pasif
+#
+# Bir kitap birden fazla kategoriye girebilir.
+# Eşleşmeyen kitaplar "Diğer" bölümüne düşer.
+
+categories:
+
+  # ── AKTİF KATEGORİLER ─────────────────────────────────────────────────────
+
+  - name: "Yapay Zeka & Robot Teknolojileri"
+    shelves:
+      - ai
+      - artificial-intelligence
+      - machine-learning
+      - deep-learning
+      - robotics
+      - neural-networks
+      - data-science
+      - nlp
+    active: true
+
+  - name: "Sağlık"
+    shelves:
+      - health
+      - medicine
+      - wellness
+      - fitness
+      - nutrition
+      - psychology
+      - mental-health
+      - neuroscience
+    active: true
+
+  # ── PASİF KATEGORİLER (şimdilik devre dışı) ───────────────────────────────
+
+  - name: "Kurgu & Edebiyat"
+    shelves:
+      - fiction
+      - novel
+      - literature
+      - fantasy
+      - sci-fi
+      - science-fiction
+      - thriller
+      - mystery
+    active: false
+
+  - name: "İş & Girişimcilik"
+    shelves:
+      - business
+      - entrepreneurship
+      - startup
+      - management
+      - leadership
+      - finance
+      - investing
+      - marketing
+    active: false
+
+  - name: "Kişisel Gelişim"
+    shelves:
+      - self-help
+      - productivity
+      - habits
+      - motivation
+      - mindfulness
+      - success
+    active: false
+
+  - name: "Bilim & Teknoloji"
+    shelves:
+      - science
+      - technology
+      - physics
+      - mathematics
+      - biology
+      - chemistry
+      - space
+      - astronomy
+    active: false
+
+  - name: "Tarih & Felsefe"
+    shelves:
+      - history
+      - philosophy
+      - biography
+      - memoir
+      - politics
+      - sociology
+    active: false
