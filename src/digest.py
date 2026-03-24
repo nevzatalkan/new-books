@@ -5,24 +5,34 @@ Daily New Books Digest
 Fetches recently published English books from Google Books API for each
 configured category and creates a GitHub Issue as the daily digest.
 The issue is assigned to the repo owner so GitHub sends an email notification.
+Book descriptions are enriched via Open Library (fallback) and Groq AI (Turkish summary).
 
-No external secrets required — uses the built-in GITHUB_TOKEN.
+Required secrets:
+    GITHUB_TOKEN  – built-in Actions token
+    GROQ_API_KEY  – optional; skips AI enrichment if missing
 """
 
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+import requests
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 CATEGORIES_FILE = ROOT / "categories.yml"
 BOOKS_PER_CATEGORY = 5
+
+OPENLIBRARY_SEARCH_URL = "https://openlibrary.org/search.json"
+OPENLIBRARY_WORKS_URL = "https://openlibrary.org"
+GROQ_MODEL = "llama-3.1-8b-instant"
+OL_HEADERS = {"User-Agent": "new-books-digest/1.0 (github.com/nevzatalkan/new-books)"}
 
 
 # ── Google Books ───────────────────────────────────────────────────────────────
@@ -59,8 +69,8 @@ def google_books_search(queries: list[str], want: int) -> list[dict]:
             seen.add(title.lower())
 
             desc = info.get("description", "")
-            if len(desc) > 350:
-                desc = desc[:347] + "..."
+            if len(desc) > 500:
+                desc = desc[:497] + "..."
 
             books.append({
                 "title":         title,
@@ -78,6 +88,102 @@ def google_books_search(queries: list[str], want: int) -> list[dict]:
     return books[:want]
 
 
+# ── Open Library ───────────────────────────────────────────────────────────────
+
+def fetch_openlibrary_description(title: str, author: str) -> str:
+    """Open Library API'den kitap açıklaması çeker. Bulamazsa boş string döner."""
+    try:
+        params = {"title": title, "author": author, "limit": 1, "fields": "key,title"}
+        resp = requests.get(OPENLIBRARY_SEARCH_URL, params=params,
+                            headers=OL_HEADERS, timeout=10)
+        resp.raise_for_status()
+        docs = resp.json().get("docs", [])
+        if not docs:
+            return ""
+
+        work_key = docs[0].get("key", "")
+        if not work_key:
+            return ""
+
+        work_resp = requests.get(f"{OPENLIBRARY_WORKS_URL}{work_key}.json",
+                                 headers=OL_HEADERS, timeout=10)
+        work_resp.raise_for_status()
+        work_data = work_resp.json()
+
+        desc = work_data.get("description", "")
+        if isinstance(desc, dict):
+            desc = desc.get("value", "")
+        return (desc or "").strip()[:800]
+    except Exception as exc:
+        print(f"[WARN] Open Library hatası ({title}): {exc}")
+        return ""
+
+
+# ── Groq AI ────────────────────────────────────────────────────────────────────
+
+def enhance_with_groq(title: str, author: str, google_desc: str,
+                      ol_desc: str, groq_client) -> str:
+    """Groq ile kitap özetini Türkçe olarak zenginleştirir."""
+    source_text = ""
+    if google_desc:
+        source_text += f"Google Books açıklaması: {google_desc}\n"
+    if ol_desc:
+        source_text += f"Open Library açıklaması: {ol_desc}\n"
+
+    if not source_text:
+        source_text = "Bu kitap hakkında kaynak bilgi bulunmuyor."
+
+    prompt = (
+        f"Kitap: \"{title}\" — Yazar: {author}\n\n"
+        f"{source_text}\n"
+        "Yukarıdaki bilgileri kullanarak bu kitap hakkında Türkçe, akıcı ve bilgilendirici "
+        "2-3 cümlelik bir özet yaz. Sadece özeti yaz, başka bir şey ekleme."
+    )
+
+    try:
+        response = groq_client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=200,
+            temperature=0.5,
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as exc:
+        print(f"[WARN] Groq hatası ({title}): {exc}")
+        return ""
+
+
+def enrich_book(book: dict, groq_client) -> dict:
+    """
+    Bir kitabın açıklamasını zenginleştirir.
+    Öncelik: Groq (Google + OL kaynak) → Open Library → Google Books
+    """
+    title = book["title"]
+    author = book["authors"]
+    google_desc = book["description"]
+
+    # 1) Open Library: Google açıklaması kısa/yoksa çek
+    ol_desc = ""
+    if not google_desc or len(google_desc) < 100:
+        ol_desc = fetch_openlibrary_description(title, author)
+        if ol_desc:
+            print(f"[INFO]   Open Library açıklaması bulundu: {title}")
+
+    # 2) Groq ile zenginleştir
+    if groq_client:
+        enhanced = enhance_with_groq(title, author, google_desc, ol_desc, groq_client)
+        if enhanced:
+            return {**book, "description": enhanced, "description_source": "groq"}
+
+    # 3) Open Library fallback (Groq yoksa veya başarısızsa)
+    if ol_desc:
+        truncated = ol_desc[:400] + ("…" if len(ol_desc) > 400 else "")
+        return {**book, "description": truncated, "description_source": "openlibrary"}
+
+    # 4) Google Books orijinal açıklama
+    return {**book, "description_source": "google"}
+
+
 # ── Formatting ─────────────────────────────────────────────────────────────────
 
 def format_book(book: dict) -> str:
@@ -85,8 +191,19 @@ def format_book(book: dict) -> str:
     if book["rating"]:
         rating_str = f" · ⭐ {book['rating']}/5 ({book['ratings_count']} ratings)"
 
+    source_badge = {
+        "groq": " 🤖",
+        "openlibrary": " 📖",
+        "google": "",
+    }.get(book.get("description_source", "google"), "")
+
     lines = [f"### [{book['title']}]({book['link']})"]
-    lines.append(f"**{book['authors']}**" + (f" · {book['published']}" if book["published"] else "") + rating_str)
+    lines.append(
+        f"**{book['authors']}**"
+        + (f" · {book['published']}" if book["published"] else "")
+        + rating_str
+        + source_badge
+    )
     if book["description"]:
         lines.append("")
         lines.append(book["description"])
@@ -109,7 +226,10 @@ def build_issue_body(sections: dict[str, list], date_str: str) -> str:
         for book in books:
             body += format_book(book)
         body += "---\n\n"
-    body += "*Generated by [nevzatalkan/new-books](https://github.com/nevzatalkan/new-books)*"
+    body += (
+        "*Generated by [nevzatalkan/new-books](https://github.com/nevzatalkan/new-books)*  \n"
+        "*🤖 = Groq AI özeti · 📖 = Open Library*"
+    )
     return body
 
 
@@ -160,6 +280,15 @@ def main() -> None:
         print("[WARN] No active categories in categories.yml")
         sys.exit(0)
 
+    groq_api_key = os.environ.get("GROQ_API_KEY", "").strip()
+    groq_client = None
+    if groq_api_key:
+        from groq import Groq
+        groq_client = Groq(api_key=groq_api_key)
+        print("[INFO] Groq AI özet zenginleştirmesi aktif.")
+    else:
+        print("[WARN] GROQ_API_KEY bulunamadı, Open Library fallback aktif.")
+
     repo_env = os.environ.get("GITHUB_REPOSITORY", "/")
     owner = repo_env.split("/")[0]
 
@@ -172,6 +301,18 @@ def main() -> None:
         books = google_books_search(queries, want=BOOKS_PER_CATEGORY)
         sections[cat["name"]] = books
         print(f"       Found {len(books)} books")
+
+    # ── Özet zenginleştirme ──────────────────────────────────────────────────
+    all_books = [(cat, i, book)
+                 for cat, books in sections.items()
+                 for i, book in enumerate(books)]
+
+    print(f"[INFO] {len(all_books)} kitap için özet zenginleştiriliyor...")
+    for idx, (cat, i, book) in enumerate(all_books):
+        print(f"[INFO]   ({idx+1}/{len(all_books)}) {book['title']}")
+        sections[cat][i] = enrich_book(book, groq_client)
+        if groq_client and idx < len(all_books) - 1:
+            time.sleep(0.5)  # rate limit koruması
 
     total = sum(len(v) for v in sections.values())
     print(f"[INFO] Total: {total} books in {len(sections)} categories")
