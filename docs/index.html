@@ -294,10 +294,10 @@
       .map(t => `<span class="topic">${esc(t)}</span>`)
       .join('');
 
-    const bodyHtml = book.topics
-      ? `<div class="topics">${topicsHtml}</div>` +
-        (book.audience ? `<p class="audience">${esc(book.audience)}</p>` : '')
-      : `<p class="description">${esc(book.description || '')}</p>`;
+    const bodyHtml =
+      (book.description ? `<p class="description">${esc(book.description)}</p>` : '') +
+      (topicsHtml ? `<div class="topics">${topicsHtml}</div>` : '') +
+      (book.audience ? `<p class="audience">${esc(book.audience)}</p>` : '');
 
     const meta = [
       book.authors,
