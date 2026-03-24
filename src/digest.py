@@ -4,7 +4,7 @@ Daily New Books Digest
 ----------------------
 Fetches newly published English books from Google Books API for each
 configured category and creates a GitHub Issue as the daily digest.
-GitHub automatically sends an email notification to the repo owner.
+The issue is assigned to the repo owner so GitHub sends an email notification.
 
 No external secrets required — uses the built-in GITHUB_TOKEN.
 """
@@ -112,7 +112,7 @@ def build_issue_body(sections: dict[str, list], date_str: str) -> str:
 
 # ── GitHub Issue ───────────────────────────────────────────────────────────────
 
-def create_github_issue(title: str, body: str) -> None:
+def create_github_issue(title: str, body: str, owner: str) -> None:
     token = os.environ.get("GITHUB_TOKEN", "").strip()
     repo  = os.environ.get("GITHUB_REPOSITORY", "").strip()
 
@@ -120,7 +120,12 @@ def create_github_issue(title: str, body: str) -> None:
         print("[ERROR] GITHUB_TOKEN or GITHUB_REPOSITORY is not set.", file=sys.stderr)
         sys.exit(1)
 
-    payload = json.dumps({"title": title, "body": body}).encode()
+    payload = json.dumps({
+        "title":     title,
+        "body":      body,
+        "assignees": [owner],   # triggers email to the assignee
+    }).encode()
+
     req = urllib.request.Request(
         f"https://api.github.com/repos/{repo}/issues",
         data=payload,
@@ -152,6 +157,10 @@ def main() -> None:
         print("[WARN] No active categories in categories.yml")
         sys.exit(0)
 
+    # Derive owner from "owner/repo" string
+    repo_env = os.environ.get("GITHUB_REPOSITORY", "/")
+    owner = repo_env.split("/")[0]
+
     sections: dict[str, list] = {}
     for cat in categories:
         query = cat.get("query", "")
@@ -171,6 +180,7 @@ def main() -> None:
     create_github_issue(
         title=f"\U0001f4da Daily Books Digest \u2014 {date_str}",
         body=build_issue_body(sections, date_str),
+        owner=owner,
     )
 
 
