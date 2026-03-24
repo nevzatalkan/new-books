@@ -1,96 +1,33 @@
-# Goodreads Digest - Kategori Konfigürasyonu
+# Weekly New Books Digest — Category Configuration
 #
-# Her kategori için:
-#   name:    E-postada görünecek başlık
-#   shelves: Goodreads raf etiketleri (küçük harf, tire ile)
-#   active:  true  → bu hafta digeste dahil edilir
-#            false → tanımlı ama şimdilik pasif
-#
-# Bir kitap birden fazla kategoriye girebilir.
-# Eşleşmeyen kitaplar "Diğer" bölümüne düşer.
+# Each category:
+#   name:   Display name in the GitHub Issue
+#   query:  Google Books API search query
+#   active: true  → included in weekly digest
+#           false → defined but skipped
 
 categories:
 
-  # ── AKTİF KATEGORİLER ─────────────────────────────────────────────────────
-
-  - name: "Yapay Zeka & Robot Teknolojileri"
-    shelves:
-      - ai
-      - artificial-intelligence
-      - machine-learning
-      - deep-learning
-      - robotics
-      - neural-networks
-      - data-science
-      - nlp
+  - name: "\U0001f916 AI & Machine Learning"
+    query: "artificial intelligence machine learning"
     active: true
 
-  - name: "Sağlık"
-    shelves:
-      - health
-      - medicine
-      - wellness
-      - fitness
-      - nutrition
-      - psychology
-      - mental-health
-      - neuroscience
+  - name: "\U0001f9be Robotics"
+    query: "robotics autonomous systems"
     active: true
 
-  # ── PASİF KATEGORİLER (şimdilik devre dışı) ───────────────────────────────
+  - name: "\U0001f4bb Computer Science"
+    query: "computer science software engineering"
+    active: true
 
-  - name: "Kurgu & Edebiyat"
-    shelves:
-      - fiction
-      - novel
-      - literature
-      - fantasy
-      - sci-fi
-      - science-fiction
-      - thriller
-      - mystery
-    active: false
+  - name: "\U0001f4a1 Business & Innovation"
+    query: "business innovation entrepreneurship"
+    active: true
 
-  - name: "İş & Girişimcilik"
-    shelves:
-      - business
-      - entrepreneurship
-      - startup
-      - management
-      - leadership
-      - finance
-      - investing
-      - marketing
-    active: false
+  - name: "\U0001f52c Science"
+    query: "popular science scientific discovery"
+    active: true
 
-  - name: "Kişisel Gelişim"
-    shelves:
-      - self-help
-      - productivity
-      - habits
-      - motivation
-      - mindfulness
-      - success
-    active: false
-
-  - name: "Bilim & Teknoloji"
-    shelves:
-      - science
-      - technology
-      - physics
-      - mathematics
-      - biology
-      - chemistry
-      - space
-      - astronomy
-    active: false
-
-  - name: "Tarih & Felsefe"
-    shelves:
-      - history
-      - philosophy
-      - biography
-      - memoir
-      - politics
-      - sociology
-    active: false
+  - name: "\U0001fa7a Health & Medicine"
+    query: "health medicine neuroscience"
+    active: true
