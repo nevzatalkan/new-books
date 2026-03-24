@@ -14,6 +14,7 @@ Required secrets:
 
 import json
 import os
+import re
 import sys
 import time
 import urllib.error
@@ -28,6 +29,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 CATEGORIES_FILE = ROOT / "categories.yml"
 BOOKS_PER_CATEGORY = 5
+GITHUB_PAGES_URL = os.environ.get("PAGES_URL", "https://nevzatalkan.github.io/new-books/")
 
 OPENLIBRARY_SEARCH_URL = "https://openlibrary.org/search.json"
 OPENLIBRARY_WORKS_URL = "https://openlibrary.org"
@@ -72,6 +74,7 @@ def google_books_search(queries: list[str], want: int) -> list[dict]:
             if len(desc) > 500:
                 desc = desc[:497] + "..."
 
+            thumb = info.get("imageLinks", {}).get("thumbnail", "")
             books.append({
                 "title":         title,
                 "authors":       ", ".join(info.get("authors", ["Unknown Author"])),
@@ -80,6 +83,7 @@ def google_books_search(queries: list[str], want: int) -> list[dict]:
                 "link":          info.get("infoLink", ""),
                 "rating":        info.get("averageRating", 0),
                 "ratings_count": info.get("ratingsCount", 0),
+                "thumbnail":     thumb.replace("http://", "https://") if thumb else "",
             })
 
         if len(books) >= want:
@@ -200,65 +204,112 @@ def enrich_book(book: dict, groq_client) -> dict:
     return {**book, "description_source": "google"}
 
 
-# ── Formatting ─────────────────────────────────────────────────────────────────
+# ── Data helpers ───────────────────────────────────────────────────────────────
 
-def format_book(book: dict) -> str:
-    rating_str = ""
-    if book["rating"]:
-        rating_str = f" · ⭐ {book['rating']}/5 ({book['ratings_count']} ratings)"
+def category_slug(name: str) -> str:
+    """Category adından URL-safe anchor ID üretir."""
+    slug = re.sub(r"[^\w\s-]", "", name).strip().lower()
+    slug = re.sub(r"[\s&]+", "-", slug)
+    return re.sub(r"-+", "-", slug).strip("-")
 
-    source_badge = {
-        "groq": " 🤖",
-        "openlibrary": " 📖",
-        "google": "",
-    }.get(book.get("description_source", "google"), "")
 
-    lines = [f"### [{book['title']}]({book['link']})"]
-    lines.append(
-        f"**{book['authors']}**"
-        + (f" · {book['published']}" if book["published"] else "")
-        + rating_str
-        + source_badge
+def build_daily_json(sections: dict[str, list], date_str: str, date_iso: str) -> dict:
+    """Günlük özet verisini JSON-serileştirilebilir dict olarak döner."""
+    categories = [
+        {"name": name, "slug": category_slug(name), "books": books}
+        for name, books in sections.items()
+        if books
+    ]
+    return {
+        "date":       date_str,
+        "date_iso":   date_iso,
+        "total":      sum(len(c["books"]) for c in categories),
+        "categories": categories,
+    }
+
+
+def save_daily_data(data: dict, date_iso: str) -> str:
+    """JSON dosyasını docs/data/ altına kaydeder, manifest.json'u günceller."""
+    docs_data = ROOT / "docs" / "data"
+    docs_data.mkdir(parents=True, exist_ok=True)
+
+    # Günlük dosya
+    filename = f"{date_iso}.json"
+    (docs_data / filename).write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
     )
+    print(f"[OK] Kaydedildi: docs/data/{filename}")
 
-    # Groq: konu başlıkları + kimler için
-    if book.get("topics"):
-        lines.append("")
-        for topic in book["topics"]:
-            lines.append(f"- {topic}")
-    if book.get("audience"):
-        lines.append("")
-        lines.append(f"**Kimler için?** {book['audience']}")
+    # Manifest güncelle
+    manifest_path = docs_data / "manifest.json"
+    manifest: list[dict] = []
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 
-    # Fallback: düz açıklama (OL veya Google)
-    elif book.get("description"):
-        lines.append("")
-        lines.append(book["description"])
+    manifest = [m for m in manifest if m.get("date_iso") != date_iso]
+    manifest.insert(0, {
+        "date":       data["date"],
+        "date_iso":   date_iso,
+        "file":       filename,
+        "total":      data["total"],
+        "categories": len(data["categories"]),
+    })
 
-    lines.append("")
+    manifest_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print(f"[OK] Manifest güncellendi ({len(manifest)} giriş)")
+    return filename
+
+
+def build_issue_body(data: dict, pages_url: str) -> str:
+    """Sadece linki ve kısa özeti içeren GitHub Issue içeriği."""
+    lines = [
+        f"# 📚 Daily Books Digest — {data['date']}",
+        "",
+        f"**{data['total']}** yeni kitap · **{len(data['categories'])}** kategori",
+        "",
+        f"## 👉 [Tüm digeseti görüntüle]({pages_url})",
+        "",
+        "---",
+        "",
+        "| Kategori | Kitap |",
+        "|----------|:-----:|",
+    ]
+    for cat in data["categories"]:
+        lines.append(f"| {cat['name']} | {len(cat['books'])} |")
+
+    # Kapak görseli olan ilk 3 kitabı öne çıkar
+    featured: list[dict] = []
+    for cat in data["categories"]:
+        for book in cat["books"]:
+            if book.get("thumbnail"):
+                featured.append(book)
+            if len(featured) >= 3:
+                break
+        if len(featured) >= 3:
+            break
+
+    if featured:
+        lines += ["", "---", "", "### Öne Çıkan Kitaplar", ""]
+        for book in featured:
+            link  = book.get("link", "#")
+            thumb = book["thumbnail"]
+            title = book["title"]
+            lines.append(f"[![{title}]({thumb})]({link})")
+            lines.append(f"**[{title}]({link})**")
+            if book.get("audience"):
+                lines.append(f"*{book['audience']}*")
+            lines.append("")
+
+    lines += [
+        "---",
+        "",
+        f"*[Tüm kitaplar → {pages_url}]({pages_url})*  ",
+        "*Generated by [nevzatalkan/new-books](https://github.com/nevzatalkan/new-books)"
+        " · 🤖 Groq AI · 📖 Open Library*",
+    ]
     return "\n".join(lines)
-
-
-def build_issue_body(sections: dict[str, list], date_str: str) -> str:
-    total = sum(len(v) for v in sections.values())
-    body = (
-        f"# \U0001f4da Daily New Books Digest\n"
-        f"**{date_str}**\n\n"
-        f"> {total} new English books across {len(sections)} categories\n\n"
-        "---\n\n"
-    )
-    for name, books in sections.items():
-        if not books:
-            continue
-        body += f"## {name}\n\n"
-        for book in books:
-            body += format_book(book)
-        body += "---\n\n"
-    body += (
-        "*Generated by [nevzatalkan/new-books](https://github.com/nevzatalkan/new-books)*  \n"
-        "*🤖 = Groq AI özeti · 📖 = Open Library*"
-    )
-    return body
 
 
 # ── GitHub Issue ───────────────────────────────────────────────────────────────
@@ -347,10 +398,15 @@ def main() -> None:
 
     today    = datetime.now(tz=timezone.utc)
     date_str = today.strftime("%-d %B %Y")
+    date_iso = today.strftime("%Y-%m-%d")
+
+    # JSON verisini oluştur ve kaydet
+    data = build_daily_json(sections, date_str, date_iso)
+    save_daily_data(data, date_iso)
 
     create_github_issue(
         title=f"\U0001f4da Daily Books Digest \u2014 {date_str}",
-        body=build_issue_body(sections, date_str),
+        body=build_issue_body(data, GITHUB_PAGES_URL),
         owner=owner,
     )
 
