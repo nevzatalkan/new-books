@@ -141,10 +141,10 @@ def enhance_with_groq(title: str, author: str, google_desc: str,
         f"{source_text}\n"
         "Yukarıdaki bilgileri kullanarak aşağıdaki JSON formatında Türkçe yanıt ver:\n"
         "{\n"
-        "  \"topics\": [\"konu 1\", \"konu 2\", \"konu 3\"],\n"
+        "  \"topics\": [\"konu 1\", \"konu 2\", \"konu 3\", \"konu 4\", \"konu 5\"],\n"
         "  \"audience\": \"Bu kitap ... için idealdir.\"\n"
         "}\n\n"
-        "- topics: kitabın 2-4 ana konu başlığı (kısa, madde madde)\n"
+        "- topics: kitabın 3-5 ana konu başlığı (kısa, madde madde)\n"
         "- audience: bu kitabın kime hitap ettiği (1 cümle)\n"
         "Sadece JSON yaz, başka hiçbir şey ekleme."
     )
