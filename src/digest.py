@@ -279,12 +279,12 @@ def build_issue_body(data: dict, pages_url: str) -> str:
     for cat in data["categories"]:
         lines.append(f"| {cat['name']} | {len(cat['books'])} |")
 
-    # Kapak görseli olan ilk 3 kitabı öne çıkar
-    featured: list[dict] = []
+    # Kapak görseli olan ilk 3 kitabı öne çıkar (kategori slug'ı ile birlikte)
+    featured: list[tuple[str, dict]] = []
     for cat in data["categories"]:
         for book in cat["books"]:
             if book.get("thumbnail"):
-                featured.append(book)
+                featured.append((cat["slug"], book))
             if len(featured) >= 3:
                 break
         if len(featured) >= 3:
@@ -292,12 +292,13 @@ def build_issue_body(data: dict, pages_url: str) -> str:
 
     if featured:
         lines += ["", "---", "", "### Öne Çıkan Kitaplar", ""]
-        for book in featured:
-            link  = book.get("link", "#")
+        for cat_slug, book in featured:
+            # Sayfada ilgili kategoriye giden link — Google Books linki mailde yok
+            page_link = f"{pages_url.rstrip('/')}#{cat_slug}"
             thumb = book["thumbnail"]
             title = book["title"]
-            lines.append(f"[![{title}]({thumb})]({link})")
-            lines.append(f"**[{title}]({link})**")
+            lines.append(f"[![{title}]({thumb})]({page_link})")
+            lines.append(f"**[{title}]({page_link})**")
             if book.get("audience"):
                 lines.append(f"*{book['audience']}*")
             lines.append("")
