@@ -2,7 +2,7 @@
 """
 Daily New Books Digest
 ----------------------
-Fetches newly published English books from Google Books API for each
+Fetches recently published English books from Google Books API for each
 configured category and creates a GitHub Issue as the daily digest.
 The issue is assigned to the repo owner so GitHub sends an email notification.
 
@@ -23,55 +23,59 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 CATEGORIES_FILE = ROOT / "categories.yml"
 BOOKS_PER_CATEGORY = 5
-MIN_YEAR = datetime.now().year - 2  # include books from last 2 years
 
 
 # ── Google Books ───────────────────────────────────────────────────────────────
 
-def google_books_search(query: str, max_results: int = 15) -> list[dict]:
-    """Return up to max_results recent English books matching query."""
+def _fetch(query: str) -> list[dict]:
+    """Single Google Books API call, returns raw book dicts."""
     params = {
-        "q": query,
-        "orderBy": "newest",
-        "maxResults": min(max_results, 40),
-        "printType": "books",
+        "q":           query,
+        "orderBy":     "newest",
+        "maxResults":  40,
+        "printType":   "books",
         "langRestrict": "en",
     }
     url = "https://www.googleapis.com/books/v1/volumes?" + urllib.parse.urlencode(params)
-
     try:
         with urllib.request.urlopen(url, timeout=15) as resp:
-            data = json.loads(resp.read())
+            return json.loads(resp.read()).get("items", [])
     except Exception as exc:
-        print(f"[WARN] Google Books API error for '{query}': {exc}")
+        print(f"[WARN] API error for '{query}': {exc}")
         return []
 
-    books = []
-    for item in data.get("items", []):
-        info = item.get("volumeInfo", {})
-        pub_date = info.get("publishedDate", "")
-        if pub_date:
-            try:
-                if int(pub_date[:4]) < MIN_YEAR:
-                    continue
-            except ValueError:
-                pass
 
-        desc = info.get("description", "")
-        if len(desc) > 300:
-            desc = desc[:297] + "..."
+def google_books_search(queries: list[str], want: int) -> list[dict]:
+    """Search multiple queries, deduplicate by title, return up to want books."""
+    seen: set[str] = set()
+    books: list[dict] = []
 
-        books.append({
-            "title":         info.get("title", "Unknown Title"),
-            "authors":       ", ".join(info.get("authors", ["Unknown Author"])),
-            "published":     pub_date,
-            "description":   desc,
-            "link":          info.get("infoLink", ""),
-            "rating":        info.get("averageRating", 0),
-            "ratings_count": info.get("ratingsCount", 0),
-        })
+    for query in queries:
+        for item in _fetch(query):
+            info = item.get("volumeInfo", {})
+            title = info.get("title", "").strip()
+            if not title or title.lower() in seen:
+                continue
+            seen.add(title.lower())
 
-    return books
+            desc = info.get("description", "")
+            if len(desc) > 350:
+                desc = desc[:347] + "..."
+
+            books.append({
+                "title":         title,
+                "authors":       ", ".join(info.get("authors", ["Unknown Author"])),
+                "published":     info.get("publishedDate", ""),
+                "description":   desc,
+                "link":          info.get("infoLink", ""),
+                "rating":        info.get("averageRating", 0),
+                "ratings_count": info.get("ratingsCount", 0),
+            })
+
+        if len(books) >= want:
+            break
+
+    return books[:want]
 
 
 # ── Formatting ─────────────────────────────────────────────────────────────────
@@ -82,7 +86,7 @@ def format_book(book: dict) -> str:
         rating_str = f" · ⭐ {book['rating']}/5 ({book['ratings_count']} ratings)"
 
     lines = [f"### [{book['title']}]({book['link']})"]
-    lines.append(f"**{book['authors']}** · {book['published']}{rating_str}")
+    lines.append(f"**{book['authors']}**" + (f" · {book['published']}" if book["published"] else "") + rating_str)
     if book["description"]:
         lines.append("")
         lines.append(book["description"])
@@ -95,8 +99,7 @@ def build_issue_body(sections: dict[str, list], date_str: str) -> str:
     body = (
         f"# \U0001f4da Daily New Books Digest\n"
         f"**{date_str}**\n\n"
-        f"> {total} new English books across {len(sections)} categories · "
-        f"Published {MIN_YEAR}+\n\n"
+        f"> {total} new English books across {len(sections)} categories\n\n"
         "---\n\n"
     )
     for name, books in sections.items():
@@ -123,7 +126,7 @@ def create_github_issue(title: str, body: str, owner: str) -> None:
     payload = json.dumps({
         "title":     title,
         "body":      body,
-        "assignees": [owner],   # triggers email to the assignee
+        "assignees": [owner],
     }).encode()
 
     req = urllib.request.Request(
@@ -157,19 +160,18 @@ def main() -> None:
         print("[WARN] No active categories in categories.yml")
         sys.exit(0)
 
-    # Derive owner from "owner/repo" string
     repo_env = os.environ.get("GITHUB_REPOSITORY", "/")
     owner = repo_env.split("/")[0]
 
     sections: dict[str, list] = {}
     for cat in categories:
-        query = cat.get("query", "")
-        if not query:
+        queries = cat.get("queries", [])
+        if not queries:
             continue
-        print(f"[INFO] Searching: {cat['name']}  →  {query}")
-        books = google_books_search(query, max_results=BOOKS_PER_CATEGORY + 10)
-        sections[cat["name"]] = books[:BOOKS_PER_CATEGORY]
-        print(f"       Found {len(sections[cat['name']])} books")
+        print(f"[INFO] Searching: {cat['name']}  ({len(queries)} queries)")
+        books = google_books_search(queries, want=BOOKS_PER_CATEGORY)
+        sections[cat["name"]] = books
+        print(f"       Found {len(books)} books")
 
     total = sum(len(v) for v in sections.values())
     print(f"[INFO] Total: {total} books in {len(sections)} categories")

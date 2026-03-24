@@ -1,33 +1,51 @@
-# Weekly New Books Digest — Category Configuration
+# Daily New Books Digest — Category Configuration
 #
 # Each category:
-#   name:   Display name in the GitHub Issue
-#   query:  Google Books API search query
-#   active: true  → included in weekly digest
-#           false → defined but skipped
+#   name:    Display name in the GitHub Issue
+#   queries: List of Google Books search terms (tried in order until 5 books found)
+#   active:  true  → included in daily digest
+#            false → defined but skipped
 
 categories:
 
   - name: "\U0001f916 AI & Machine Learning"
-    query: "artificial intelligence machine learning"
+    queries:
+      - "subject:artificial intelligence"
+      - "subject:machine learning"
+      - "subject:deep learning"
     active: true
 
   - name: "\U0001f9be Robotics"
-    query: "robotics autonomous systems"
+    queries:
+      - "subject:robotics"
+      - "robotics autonomous systems"
+      - "robot programming"
     active: true
 
   - name: "\U0001f4bb Computer Science"
-    query: "computer science software engineering"
+    queries:
+      - "subject:computer science"
+      - "subject:software engineering"
+      - "subject:programming"
     active: true
 
   - name: "\U0001f4a1 Business & Innovation"
-    query: "business innovation entrepreneurship"
+    queries:
+      - "subject:entrepreneurship"
+      - "subject:business innovation"
+      - "subject:startup"
     active: true
 
   - name: "\U0001f52c Science"
-    query: "popular science scientific discovery"
+    queries:
+      - "subject:popular science"
+      - "subject:physics"
+      - "subject:biology"
     active: true
 
   - name: "\U0001fa7a Health & Medicine"
-    query: "health medicine neuroscience"
+    queries:
+      - "subject:medicine"
+      - "subject:neuroscience"
+      - "subject:health"
     active: true
