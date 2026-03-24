@@ -259,9 +259,9 @@
 </footer>
 
 <script>
-  // Resolve base path so it works at any sub-path on GitHub Pages
+  // Resolve base path — strips filename if present (works for /new-books/ and /new-books/index.html)
   const BASE = (() => {
-    const p = location.pathname.replace(/\/?$/, '/');
+    const p = location.pathname.replace(/\/[^/]*$/, '/');
     return location.origin + p;
   })();
 
@@ -372,7 +372,12 @@
       if (manifest.length > 0) await loadDate(manifest[0].file);
     } catch (e) {
       document.getElementById('content').innerHTML =
-        `<p class="error">Manifest yüklenemedi: ${esc(e.message)}</p>`;
+        `<p class="error">
+          Henüz digest verisi yok ya da yüklenemedi.<br>
+          GitHub Actions → <strong>Daily New Books Digest</strong> → <em>Run workflow</em> ile ilk çalıştırmayı yap.<br>
+          <small style="color:#aaa">(${esc(e.message)})</small>
+        </p>`;
+      document.getElementById('date-select').innerHTML = '<option>— veri yok —</option>';
     }
   }
 
