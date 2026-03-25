@@ -1,6 +1,606 @@
 {
   "date": "25 March 2026",
   "date_iso": "2026-03-25",
-  "total": 0,
-  "categories": []
+  "total": 30,
+  "categories": [
+    {
+      "name": "🤖 AI & Machine Learning",
+      "slug": "ai-machine-learning",
+      "books": [
+        {
+          "title": "A Multilingual Dictionary of Artificial Intelligence",
+          "authors": "Otto Vollnhals",
+          "published": "1992",
+          "description": "Contains the state-of-the-art terminology of AI, giving over 3500 terms in English, French, German, Spanish and Italian - including expert systems, neural networks, logic, voice recognition and synthesis, and natural language processing.",
+          "link": "http://books.google.com/books?id=z1gOESCVTbkC&dq=subject:artificial+intelligence&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=z1gOESCVTbkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Siber Zeka Terimleri",
+            "Uzman Sistemler",
+            "Sinir Ağları",
+            "Dil İşleme",
+            "Ses Tanıma ve Synthesis"
+          ],
+          "audience": "Bu kitap, AI alanındaki uzman ve öğrenciler için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Artificial Intelligence and Human Institutions",
+          "authors": "John Richard Ennals",
+          "published": "1991",
+          "description": "",
+          "link": "http://books.google.com/books?id=yTevQgAACAAJ&dq=subject:artificial+intelligence&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "",
+          "topics": [
+            "Sanal Zekâ ve İnsanî Kurumlar",
+            "İnsanî Kurumların Geleceği",
+            "Sanal Zekâ ve Toplum",
+            "İnsanî Kurumlar ve İnovasyon",
+            "Sosyal Değişim ve Sanal Zekâ"
+          ],
+          "audience": "Bu kitap, sanal zekâ ve insanî kurumlar arasındaki ilişkilerle ilgilenen akademisyenler, araştırmacılar ve uzmanlar için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Advances in Artificial and Human Intelligence in the Modern Era",
+          "authors": "S. Suman Rajest, Ahmed J. Obaid, Bhopendra Singh, Regin R, Karthikeyan Chinnusamy",
+          "published": "2023",
+          "description": "\"Offers a groundbreaking solution to address the existing challenges in the intersection of AI and human performance optimization\"--",
+          "link": "http://books.google.com/books?id=gzYi0AEACAAJ&dq=subject:artificial+intelligence&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=gzYi0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "Sanal Zekâ ve İnsanların Performansı",
+            "İnsan Performansı Optimizasyonu",
+            "AI ve İnsanların Performansı",
+            "Sanal Zekâ ve İnsanların Performansı Optimizasyonu",
+            "Modern Çağda İnsanların Performansı"
+          ],
+          "audience": "Bu kitap, AI ve insan performansı optimizasyonu alanındaki uzmanlar ve öğrenciler için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Recent Developments in Machine and Human Intelligence",
+          "authors": "S. Suman Rajest, Bhopendra Singh, Ahmed Obaid, Regin R, Karthikeyan Chinnusamy",
+          "published": "2023",
+          "description": "\"For a long time, researchers in the fields of psychology and neuroscience have been interested in discovering ways to boost productivity in traditionally \"healthy,\" \"clinical,\" and \"military\" populations. However, one of the biggest challenges in reaching this objective is developing personalised performance phenotypes that can be used to build interventions that are specifically catered to each individual's needs. Impact: Thanks to AI's recent advancements, we can now create individualised ...",
+          "link": "http://books.google.com/books?id=aM_jzwEACAAJ&dq=subject:artificial+intelligence&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=aM_jzwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "Bilgisayar ve İnsan Zekası",
+            "Verimlilik",
+            "Bireyselleştirilmiş Performans",
+            "AI Uygulamaları",
+            "Bireysel Gelişim"
+          ],
+          "audience": "Bu kitap araştırmacılar, psikologlar ve neurobilimciler için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Explainable AI Applications for Human Behavior Analysis",
+          "authors": "P. Paramasivan",
+          "published": "2024",
+          "description": "\"This book uses AI's ability to explain its behaviors to explore new challenges, domains, and methodologies for analyzing human behavior in natural settings\"--",
+          "link": "http://books.google.com/books?id=WYxh0AEACAAJ&dq=subject:artificial+intelligence&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=WYxh0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "AI'nın açıklanabilir davranışları",
+            "İnsan davranışının doğal ortamlarda analizi",
+            "Yeni zorluklar ve metodolojiler",
+            "Açıklanabilir AI uygulamaları",
+            "İnsan davranışı analizi"
+          ],
+          "audience": "Bu kitap, AI ve insan davranışını analiz eden araştırmacılar, bilim insanları ve öğrenciler için idealdir.",
+          "description_source": "groq"
+        }
+      ]
+    },
+    {
+      "name": "🦾 Robotics",
+      "slug": "robotics",
+      "books": [
+        {
+          "title": "Wired for War",
+          "authors": "Peter Warren Singer",
+          "published": "2009",
+          "description": "Traces the advent of robotic warfare, revealing its use in the war in Iraq, the latest technological achievements, and the secret Pentagon consultations with top science fiction authors.",
+          "link": "http://books.google.com/books?id=AJuowQmtbU4C&dq=subject:robotics&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 4,
+          "ratings_count": 9,
+          "thumbnail": "https://books.google.com/books/content?id=AJuowQmtbU4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Robotlu Savaşın Gelişimi",
+            "Irak Savaşı'nda Robotların Kullanımı",
+            "Gelişen Teknolojiler",
+            "Fantezi Yazarları ile Pentagon'un Gizli Danışmanlığı"
+          ],
+          "audience": "Bu kitap, askeri teknolojiden ve savaşın geleceğinden fazlasıyla ilgilenen okuyucular için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Microcontrollers Fundamentals for Engineers and Scientists",
+          "authors": "Steven F. Barrett, Daniel J. Pack",
+          "published": "2022-06-01",
+          "description": "This book provides practicing scientists and engineers a tutorial on the fundamental concepts and use of microcontrollers. Today, microcontrollers, or single integrated circuit (chip) computers, play critical roles in almost all instrumentation and control systems. Most existing books arewritten for undergraduate and graduate students taking an electrical and/or computer engineering course. Furthermore, these texts have beenwritten with a particular model of microcontroller as the target disc...",
+          "link": "https://play.google.com/store/books/details?id=3YJyEAAAQBAJ&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=3YJyEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Bilgisayar Kontrolcüleri Temelleri",
+            "Bilgisayar Kontrolcüleri Kullanımı",
+            "İletişim Protokolleri",
+            "Programlama ve Uygulama",
+            "Uygulama Örnekleri"
+          ],
+          "audience": "Bu kitap pratik bilim ve mühendisler için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "The Singularity is Near",
+          "authors": "Ray Kurzweil",
+          "published": "2006",
+          "description": "A controversial scientific vision predicts a time in which humans and machines will merge and create a new form of non-biological intelligence.",
+          "link": "http://books.google.com/books?id=BXSdPwAACAAJ&dq=subject:robotics&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 5,
+          "ratings_count": 1,
+          "thumbnail": "https://books.google.com/books/content?id=BXSdPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "İnsan ve Makine Birleşimi",
+            "Sınırlandırılmamış Zekâ",
+            "Biyolojik ve Biyoteknik Zekâ",
+            "Teknoloji ve İnsanlık",
+            "Geleceğin Zekâsı"
+          ],
+          "audience": "Bu kitap, teknoloji ve gelecekle ilgilenen kişiler için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Artificial General Intelligence",
+          "authors": "Ben Goertzel, Cassio Pennachin",
+          "published": "2007-01-17",
+          "description": "“Only a small community has concentratedon general intelligence. No one has tried to make a thinking machine . . . The bottom line is that we really haven’t progressed too far toward a truly intelligent machine. We have collections of dumb specialists in small domains; the true majesty of general intelligence still awaits our attack. . . . We have got to get back to the deepest questions of AI and general intelligence. . . ” –MarvinMinsky as interviewed in Hal’s Legacy, edited by David Stork,...",
+          "link": "https://play.google.com/store/books/details?id=ZRKMsqOIv60C&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=ZRKMsqOIv60C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Genel Zeka",
+            "Aygıt Zeka",
+            "Düşünme Makineleri",
+            "Genel Bilgelik",
+            "İnsansı Zeka"
+          ],
+          "audience": "Bu kitap genel zeka ve düşünme makineleri konularında derinlemesine bilgi arayan araştırmacılar ve uzmanlar için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Universe, Human Immortality and Future Human Evaluation",
+          "authors": "Alexander Bolonkin",
+          "published": "2011-12-12",
+          "description": "Pt. 1. Universe. Who are we? Where are we? -- pt. 2. Human immortality and future human evaluation.",
+          "link": "http://books.google.com/books?id=TuWQx58ZnPsC&dq=subject:robotics&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=TuWQx58ZnPsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Evren",
+            "İnsan Ölümsüzlüğü",
+            "Gelecek İnsan Değerlendirmesi",
+            "İnsan Kimiz?",
+            "Neredeyiz?"
+          ],
+          "audience": "Bu kitap, evrenbilim, ölümsüzlük ve gelecekteki insan değerlendirmesi konularına ilgi duyanlar için idealdir.",
+          "description_source": "groq"
+        }
+      ]
+    },
+    {
+      "name": "💻 Computer Science",
+      "slug": "computer-science",
+      "books": [
+        {
+          "title": "Intelligence Science",
+          "authors": "Zhongzhi Shi",
+          "published": "2012",
+          "description": "Intelligence Science is an interdisciplinary subject dedicated to joint research on basic theory and technology of intelligence by brain science, cognitive science, artificial intelligence and others. Brain science explores the essence of brain research on the principle and model of natural intelligence at the molecular, cell and behavior level. Cognitive science studies human mental activity, such as perception, learning, memory, thinking, consciousness etc. In order to implement machine int...",
+          "link": "http://books.google.com/books?id=Q1O6CgAAQBAJ&dq=subject:computer+science&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=Q1O6CgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Bilinç Bilimi Temelleri",
+            "Sınır Bilimi ve İnsansı Zekâ",
+            "Bilgisayar Bilimi ve İnsansı Zekâ",
+            "İnsan Zekâsı ve Bilgisayar Zekâsı",
+            "Bilinç Bilimi Uygulamaları"
+          ],
+          "audience": "Bu kitap, bilimsel araştırmalar ve teknoloji geliştirme için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Academic Research Equipment in Computer Science, Central Computer Facilities, and Engineering, 1989",
+          "authors": "Bradford Chaney",
+          "published": "1991",
+          "description": "",
+          "link": "https://play.google.com/store/books/details?id=LIxRrcHllGcC&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=LIxRrcHllGcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Bilgisayar Bilimi",
+            "Merkezi Bilgi İşlem Tesisleri",
+            "Mühendislik",
+            "Araştırmaya Yönelik Bilgisayar Cihazları",
+            "Bilgisayar Bilimi ve Mühendisliği"
+          ],
+          "audience": "Bu kitap bilgisayar bilimi, merkezi bilgi işlem tesisleri ve mühendislik alanındaki araştırmacılar için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Computer Applications in Applied Polymer Science II",
+          "authors": "Theodore Provder, American Chemical Society. Division of Polymeric Materials: Science and Engineering, American Chemical Society. Meeting",
+          "published": "1989",
+          "description": "Addresses the impact of computer science on automation, modeling, simulation, and optimization of polymer science as a result of the availability of more powerful, lower-cost computers and modeling software. Five sections illustrate a wide variety of modeling applications, including laboratory and information automation; mathematical modeling, simulation, and optimization; cross-linking reactions and cure process modeling; polymerization kinetics and process modeling; and polymerization proce...",
+          "link": "http://books.google.com/books?id=67iaAAAAIAAJ&dq=subject:computer+science&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=67iaAAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "Bilgisayar Bilimi'nin Polimer Bilimi'ne Etkisi",
+            "Polimer Bilimi'nin Otomasyon ve Modelleme",
+            "Polimer Reaksiyonları ve İşlem Modellenmesi",
+            "Polimerleştirme Kinetikleri ve İşlem Modellenmesi",
+            "Polimer İşlem Otomasyonu"
+          ],
+          "audience": "Bu kitap, polimer bilimine ilgi duyan araştırmacılar ve mühendisler için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Amongst Friends in Computer and Law:A Bundle of Essays in Remembrance of Guy Vandenberghe",
+          "authors": "Guy P. V. Vandenberghe",
+          "published": "1990",
+          "description": "The various contributions to this book come from expert colleagues from all over the world, each discussing an item within their field of specialisation or interest. The variety of topics gives a very clear and interesting overview of the field of Computers and Law. This book is dedicated to the memory of Professor Dr. Guy P.V. Vandenberghe (1953-1989).",
+          "link": "http://books.google.com/books?id=5kI6AQAAIAAJ&dq=subject:computer+science&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=5kI6AQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "Bilgisayar Hukuku",
+            "Hukuki Uygulamalar",
+            "Bilgi Teknolojileri",
+            "Hukuki Sorunlar",
+            "Bilgisayar ve Hukuk"
+          ],
+          "audience": "Bu kitap bilgisayar hukuku uzmanları ve ilgili alanlarda çalışan kişiler için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Proceedings of the 1977 International Conference on Parallel Processing",
+          "authors": "Jean-Loup Baer",
+          "published": "1977",
+          "description": "",
+          "link": "http://books.google.com/books?id=bns_AQAAIAAJ&dq=subject:computer+science&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=bns_AQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "Paralel İşlem",
+            "Bilgisayar Mimarisi",
+            "Veri Yapıları",
+            "Görsel İşleme",
+            "Bilgisayar Ağları"
+          ],
+          "audience": "Bu kitap bilgisayar mühendisliği ve bilgisayarla ilgili alanlarda çalışanlar için idealdir.",
+          "description_source": "groq"
+        }
+      ]
+    },
+    {
+      "name": "💡 Business & Innovation",
+      "slug": "business-innovation",
+      "books": [
+        {
+          "title": "The Jewish Century, New Edition",
+          "authors": "Yuri Slezkine",
+          "published": "2019-05-28",
+          "description": "This masterwork of interpretative history begins with a bold declaration: “The Modern Age is the Jewish Age, and the twentieth century, in particular, is the Jewish Century.” The assertion is, of course, metaphorical. But it drives home Yuri Slezkine’s provocative thesis: Jews have adapted to the modern world so well that they have become models of what it means to be modern. While focusing on the drama of the Russian Jews, including émigrés and their offspring, The Jewish Century is also an ...",
+          "link": "http://books.google.com/books?id=0XGODwAAQBAJ&dq=subject:entrepreneurship&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=0XGODwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Modern Çağın Yahudi Çağı",
+            "Yahudi Soykırımının Dramı",
+            "Modern Dünya ile Uyum",
+            "Yahudi Soykırımının Dramı",
+            "Yahudi Kültürünün Adaptasyonu"
+          ],
+          "audience": "Bu kitap, tarih, sosyoloji ve kültürel analiz konularında ilgi duyanlar için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Innovation and Entrepreneurship",
+          "authors": "Peter Drucker",
+          "published": "2012-08-06",
+          "description": "Still a neglected area of business, the ability to innovate and be a systematic entrepreneur is the focus of Peter Drucker's study, that deals with the practicalities of opportunities, risks, structures, strategies, staffing and remuneration.",
+          "link": "http://books.google.com/books?id=sLkJBAAAQBAJ&dq=subject:entrepreneurship&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=sLkJBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Fırsatların Pratikliği",
+            "Riskler ve Strateji",
+            "Organizasyon ve Personel",
+            "Yönetişim ve Ödüllendirme"
+          ],
+          "audience": "Bu kitap, iş dünyasındaki yenilikçi ve girişimci iş insanları için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "The Nudist on the Late Shift",
+          "authors": "Po Bronson",
+          "published": "1999",
+          "description": "Journeys behind the scenes of Silicon Valley to profile some of the colorful inhabitants of this high-tech universe, including David Filo, a co-founder of Yahoo.",
+          "link": "http://books.google.com/books?id=h2miy78PR-QC&dq=subject:entrepreneurship&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=h2miy78PR-QC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "Silikon Vadisi'nin Geri Planda Kalan Dünya",
+            "Yahoo'nun Kurucularından David Filo",
+            "Silikon Vadisi'nin Renkli Sakinleri",
+            "Teknoloji Dünyasının Arkasındaki Öyküler",
+            "Silikon Vadisi'nin Gizli Yüzü"
+          ],
+          "audience": "Bu kitap, teknoloji sektörüne ilgi duyan ve Silikon Vadisi'nin gizli dünyasını keşfetmek isteyen okuyucular için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Your Next Five Moves",
+          "authors": "Patrick Bet-David, Greg Dinkin",
+          "published": "2021-06",
+          "description": "Originally published in hardcover in 2020 by Gallery Books.",
+          "link": "http://books.google.com/books?id=vKYsEAAAQBAJ&dq=subject:entrepreneurship&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=vKYsEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Stratejik Planlama",
+            "İnovasyon",
+            "İş Yönetimi",
+            "Karlılık",
+            "Girişimcilik"
+          ],
+          "audience": "Bu kitap, iş dünyasındaki liderler ve girişimciler için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "The Startup Playbook",
+          "authors": "David Kidder, Hanny Hindi",
+          "published": "2012",
+          "description": "\" ... [The author] shares the inspiring experiences, lessons, and words to the wise from more than forty founders, along with his own playbook for startup success\"--Page 4 of cover.",
+          "link": "http://books.google.com/books?id=iyAbTjqVXgkC&dq=subject:entrepreneurship&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=iyAbTjqVXgkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Startup Başarı Yöntemi",
+            "Girişimci Anıları",
+            "Öğrenilen Dersler",
+            "Girişimcilik Önerileri"
+          ],
+          "audience": "Bu kitap yeni girişimciler ve mevcut iş sahipleri için idealdir.",
+          "description_source": "groq"
+        }
+      ]
+    },
+    {
+      "name": "🔬 Science",
+      "slug": "science",
+      "books": [
+        {
+          "title": "Insects and Diseases of Willow and Poplar",
+          "authors": "Warren T. Johnson, Wayne Alfred Sinclair, J. L. Saunders",
+          "published": "1975",
+          "description": "",
+          "link": "http://books.google.com/books?id=vOMOAQAAMAAJ&dq=subject:popular+science&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=vOMOAQAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "Orman Zararlıları",
+            "Willow ve Poplar Hastalıkları",
+            "Böcekler ve Ağaç Hastalıkları",
+            "Orman Sağlığı",
+            "Ağaç Koruma"
+          ],
+          "audience": "Bu kitap profesyoneller ve orman yönetimi alanında çalışanlar için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Unterhaltungsliteratur",
+          "authors": "Dieter Petzold, Eberhard Späth",
+          "published": "1990",
+          "description": "",
+          "link": "http://books.google.com/books?id=bdUe4zli8s8C&dq=subject:popular+science&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=bdUe4zli8s8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "Unterhaltungsliteratur türleri",
+            "Edebiyat ve popüler kültürün etkileşimi",
+            "Kitaplar ve okuma alışkanlıkları",
+            "Popüler kültür ve toplum",
+            "Edebiyatın toplumsal etkileri"
+          ],
+          "audience": "Bu kitap edebi çalışmaların popüler kültürle olan etkileşimi ve edebi türler hakkında bilgi arayanlar için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Culture in the Contemporary PRC",
+          "authors": "Michel Hockx, Julia Strauss",
+          "published": "2005-12-26",
+          "description": "The culture of the People's Republic of China offers a unique blend of the popular, the political and the avant-garde. In no other country in the world are cultural products subjected to such strict censorship and at the same time consumed by such large numbers of people. This volume presents essays by scholars at the cutting edge of Chinese cultural studies, dealing with subjects ranging from advertising to poetry, from rock music to revolutionary museums, providing an authoritative and mult...",
+          "link": "http://books.google.com/books?id=lDG2TCuropEC&dq=subject:popular+science&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=lDG2TCuropEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Çin'in Kültür Politikası",
+            "Popüler Kültür",
+            "Avant-Garde Kültür",
+            "Çin Kültür İncelemeleri",
+            "Çin Kültür Araştırmaları"
+          ],
+          "audience": "Bu kitap Çin kültürü ve kültürel incelemeleri ile ilgilenen akademisyenler ve araştırmacılar için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Scrittore e lettore nella società di massa",
+          "authors": "Ulrich Schulz-Buschhaus, Centro internazionale di studio per la letteratura di massa",
+          "published": "1991",
+          "description": "",
+          "link": "http://books.google.com/books?id=KBcLAAAAIAAJ&dq=subject:popular+science&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=KBcLAAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "Kitapçılık ve Yayıncılık",
+            "Kitap Okuryazarlığı",
+            "Sosyoloji",
+            "Kitap Kültürü",
+            "Kitap ve Toplum"
+          ],
+          "audience": "Bu kitap, edebiyat öğrencileri, yazarlar, kütüphane profesyonelleri ve kitap meraklıları için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Märchen in unserer Zeit",
+          "authors": "Hans-Jörg Uther",
+          "published": "1990",
+          "description": "Märchen als Lebenshilfe und als Werbeträger - als Comics und in Cartoons ...",
+          "link": "http://books.google.com/books?id=XWPYAAAAMAAJ&dq=subject:popular+science&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=XWPYAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "Masalların Yaşam Boyu Yardımcısı Olması",
+            "Masalların Reklam Aracı Olması",
+            "Masalların Çizgi Filmlerde Kullanılması",
+            "Masalların Animasyonlarda Kullanılması"
+          ],
+          "audience": "Bu kitap, masal severler ve masal bilimiyle ilgilenenler için idealdir.",
+          "description_source": "groq"
+        }
+      ]
+    },
+    {
+      "name": "🩺 Health & Medicine",
+      "slug": "health-medicine",
+      "books": [
+        {
+          "title": "The Story of My Life",
+          "authors": "James Marion Sims",
+          "published": "1884",
+          "description": "",
+          "link": "https://play.google.com/store/books/details?id=-3ACAAAAYAAJ&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=-3ACAAAAYAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Hayat Hikayesi",
+            "Yaşam Denemeleri",
+            "Tarihsel Önemi"
+          ],
+          "audience": "Bu kitap, tarihseverler ve biyografi severler için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Textbook of Family Medicine",
+          "authors": "Robert E. Rakel, David Rakel",
+          "published": "2011",
+          "description": "Offers guidance on the principles of family medicine, primary care in the community, and various aspects of clinical practice. Suitable for both residents and practicing physicians, this title includes evidence-based, practical information to optimize your patient care and prepare you for the ABFM exam.",
+          "link": "http://books.google.com/books?id=t0Mh0yOH5EsC&dq=subject:medicine&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=t0Mh0yOH5EsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Aile Hekimliği Temelleri",
+            "Topluluk Primeryar Tedavi",
+            "Klinik Uygulamalar",
+            "Evidans Tabanlı Bilgi",
+            "ABFM Sınav Hazırlığı"
+          ],
+          "audience": "Bu kitap aile hekimliği uzmanları ve aile hekimliği uzmanlığını pursuit eden öğrenciler için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "American Physicians in the Nineteenth Century: from Sects to Science",
+          "authors": "William G. Rothstein",
+          "published": "1972",
+          "description": "\"[According to a survey of medical historians] the most important book of the past decade was William G. Rothstein's American Physicians in the Nineteenth Century.\"--Reviews in American History.",
+          "link": "http://books.google.com/books?id=6S9rAAAAMAAJ&dq=subject:medicine&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=6S9rAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+          "topics": [
+            "19. Yüzyılda Amerikan Tıpçısı",
+            "Tıp Tarihçileri Anketi",
+            "Tıp Bilimi",
+            "Amerikan Tıpçısı",
+            "19. Yüzyıl Tıpı"
+          ],
+          "audience": "Bu kitap, tıp tarihçileri, tıp öğrencileri ve tıp profesyonelleri için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Chemical and Physical Behavior of Human Hair",
+          "authors": "Clarence R. Robbins",
+          "published": "2012-02-25",
+          "description": "Human hair is the subject of a remarkably wide range of scientific investigations. Its chemical and physical properties are of importance to the cosmetics industry, forensic scientists and to biomedical researchers. The fifth edition of this book confirms its position as the definitive monograph on the subject. Previous editions were recognized as “concise and thorough” (Journal of the American Chemical Society), “an invaluable resource” (Canadian Forensic Science Society Journal), and “highl...",
+          "link": "http://books.google.com/books?id=q3MGMTYAfu4C&dq=subject:medicine&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=q3MGMTYAfu4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "Sağlık Bilimleri",
+            "Kimya",
+            "Fizik",
+            "Kozmetik",
+            "Forensik"
+          ],
+          "audience": "Bu kitap, kimya, fizik, kozmetik ve forensik alanındaki araştırmacılar için idealdir.",
+          "description_source": "groq"
+        },
+        {
+          "title": "Destiny of the Republic",
+          "authors": "Candice Millard",
+          "published": "2011",
+          "description": "A narrative account of the twentieth president's political career offers insight into his background as a scholar and Civil War hero, his battles against the corrupt establishment, and Alexander Graham Bell's failed attempt to save him from an assassin's bullet.",
+          "link": "http://books.google.com/books?id=bvnZ_xn60bwC&dq=subject:medicine&hl=&as_pt=BOOKS&source=gbs_api",
+          "rating": 0,
+          "ratings_count": 0,
+          "thumbnail": "https://books.google.com/books/content?id=bvnZ_xn60bwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+          "topics": [
+            "20. Başkanın Siyasi Kariyeri",
+            "Sivil Savaş Kahramanı",
+            "Korrupt Otoriteye Karşı Mücadele",
+            "Alexander Graham Bell'in Kıyamet Günü"
+          ],
+          "audience": "Bu kitap, tarihseverler ve Amerikan tarihi hakkında bilgi isteyenler için idealdir.",
+          "description_source": "groq"
+        }
+      ]
+    }
+  ]
 }
