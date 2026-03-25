@@ -113,6 +113,19 @@
     padding: 0.1rem 0.5rem;
   }
 
+  /* ── Sub-sections ── */
+  .sub-section { margin-bottom: 1.8rem; }
+  .sub-header {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 0.9rem;
+    padding: 0.3rem 0.7rem;
+    background: #f0f4ff;
+    border-left: 3px solid var(--link);
+    border-radius: 0 6px 6px 0;
+  }
+
   /* ── Book card ── */
   .book-card {
     background: var(--surface);
@@ -320,14 +333,31 @@
       </article>`;
   }
 
+  function renderSubSection(label, books) {
+    if (!books || !books.length) return '';
+    return `
+      <div class="sub-section">
+        <h3 class="sub-header">${label}</h3>
+        ${books.map(renderBook).join('')}
+      </div>`;
+  }
+
+  function catTotal(cat) {
+    return (cat.books || []).length +
+           (cat.popular_recent || []).length +
+           (cat.popular_classic || []).length;
+  }
+
   function renderCategory(cat) {
     return `
       <section class="cat-section" id="${esc(cat.slug)}">
         <div class="cat-header">
           <h2>${esc(cat.name)}</h2>
-          <span class="cat-count">${cat.books.length} kitap</span>
+          <span class="cat-count">${catTotal(cat)} kitap</span>
         </div>
-        ${cat.books.map(renderBook).join('')}
+        ${renderSubSection('🆕 Yeni Kitaplar', cat.books)}
+        ${renderSubSection('⭐ Son 10 Yılın Popülerleri', cat.popular_recent)}
+        ${renderSubSection('📜 Klasikler (10–100 Yıl)', cat.popular_classic)}
       </section>`;
   }
 
@@ -336,12 +366,12 @@
     const content = document.getElementById('content');
 
     toc.innerHTML = data.categories
-      .filter(c => c.books.length)
-      .map(c => `<a href="#${esc(c.slug)}">${esc(c.name)} <span class="count">${c.books.length}</span></a>`)
+      .filter(c => catTotal(c) > 0)
+      .map(c => `<a href="#${esc(c.slug)}">${esc(c.name)} <span class="count">${catTotal(c)}</span></a>`)
       .join('');
 
     content.innerHTML = data.categories
-      .filter(c => c.books.length)
+      .filter(c => catTotal(c) > 0)
       .map(renderCategory)
       .join('');
   }
