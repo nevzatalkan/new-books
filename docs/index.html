@@ -11,7 +11,6 @@
     --bg: #f5f6fa;
     --surface: #ffffff;
     --header-bg: #16213e;
-    --accent: #0f3460;
     --link: #4a90e2;
     --text: #212529;
     --muted: #6c757d;
@@ -26,74 +25,125 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
+    font-size: 16px;
   }
 
   a { color: var(--link); }
   a:hover { text-decoration: underline; }
 
-  /* ── Header ── */
+  /* ── Header (NOT sticky) ── */
   header {
     background: var(--header-bg);
     color: #fff;
-    padding: 1.2rem 1rem 0.8rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,.3);
+    box-shadow: 0 2px 12px rgba(0,0,0,.35);
   }
-  .header-row {
+
+  .header-bar {
     max-width: 960px;
     margin: 0 auto;
+    padding: 0.75rem 1rem;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 0.7rem;
+    gap: 0.75rem;
   }
-  header h1 { font-size: 1.2rem; flex: 1 1 auto; }
+
+  header h1 {
+    font-size: 1.1rem;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   #date-select {
     background: rgba(255,255,255,.12);
     color: #fff;
-    border: 1px solid rgba(255,255,255,.25);
+    border: 1px solid rgba(255,255,255,.3);
     border-radius: 8px;
-    padding: 0.45rem 0.7rem;
-    font-size: 0.88rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
     cursor: pointer;
-    max-width: 100%;
+    max-width: 180px;
   }
   #date-select option { background: #16213e; }
 
-  #toc {
+  /* Hamburger button — visible only on mobile */
+  #menu-btn {
+    display: none;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.3);
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.4rem 0.65rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  /* ── Desktop TOC (pill row below header) ── */
+  #toc-desktop {
+    background: rgba(0,0,0,.18);
+    padding: 0.5rem 1rem;
+  }
+  .toc-inner {
     max-width: 960px;
-    margin: 0.6rem auto 0;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem;
-    padding-bottom: 0.6rem;
   }
-  #toc a {
+  .toc-inner a {
     background: rgba(255,255,255,.13);
     color: #fff;
     text-decoration: none;
-    padding: 0.3rem 0.75rem;
+    padding: 0.28rem 0.75rem;
     border-radius: 20px;
     font-size: 0.8rem;
     transition: background .15s;
     white-space: nowrap;
   }
-  #toc a:hover, #toc a:active { background: rgba(255,255,255,.28); }
-  #toc .count {
+  .toc-inner a:hover, .toc-inner a:active { background: rgba(255,255,255,.3); }
+  .toc-inner .cnt {
     background: rgba(255,255,255,.22);
     border-radius: 10px;
     padding: 0 5px;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+  }
+
+  /* ── Mobile drawer ── */
+  #toc-drawer {
+    display: none;
+    background: #0f1d35;
+    padding: 0.6rem 1rem 1rem;
+  }
+  #toc-drawer.open { display: block; }
+  #toc-drawer a {
+    display: block;
+    color: rgba(255,255,255,.85);
+    text-decoration: none;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    font-size: 0.95rem;
+  }
+  #toc-drawer a:last-child { border-bottom: none; }
+  #toc-drawer a:active { color: #fff; }
+  #toc-drawer .cnt {
+    float: right;
+    background: rgba(255,255,255,.18);
+    border-radius: 10px;
+    padding: 0.05rem 0.45rem;
+    font-size: 0.78rem;
   }
 
   /* ── Main ── */
   main {
     max-width: 960px;
     margin: 1.4rem auto;
-    padding: 0 0.85rem 3rem;
+    padding: 0 1rem 3rem;
   }
 
-  /* ── Category section ── */
+  /* ── Category ── */
   .cat-section { margin-bottom: 2.5rem; }
   .cat-header {
     display: flex;
@@ -105,19 +155,19 @@
   }
   .cat-header h2 { font-size: 1.2rem; }
   .cat-count {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     background: #e2e8f0;
     color: var(--muted);
     border-radius: 10px;
     padding: 0.1rem 0.5rem;
   }
 
-  /* ── Sub-sections ── */
+  /* ── Sub-section ── */
   .sub-section { margin-bottom: 1.8rem; }
   .sub-header {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 600;
-    color: var(--muted);
+    color: #444;
     margin-bottom: 0.9rem;
     padding: 0.3rem 0.7rem;
     background: #f0f4ff;
@@ -129,19 +179,18 @@
   .book-card {
     background: var(--surface);
     border-radius: var(--radius);
-    padding: 1.1rem 1.2rem;
-    margin-bottom: 0.9rem;
+    padding: 1rem 1.1rem;
+    margin-bottom: 0.85rem;
     box-shadow: var(--shadow);
     display: flex;
-    gap: 1.2rem;
-    transition: box-shadow .18s;
+    gap: 1rem;
   }
-  .book-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.13); }
 
   .book-cover {
     flex: 0 0 80px;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
   }
   .book-cover img {
     width: 80px;
@@ -154,144 +203,99 @@
   .no-cover {
     width: 80px;
     height: 112px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #667eea, #764ba2);
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
   }
-
   .cover-rating {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     color: var(--muted);
     text-align: center;
-    margin-top: 0.35rem;
+    margin-top: 0.3rem;
     line-height: 1.3;
+    word-break: break-word;
   }
 
   .book-body { flex: 1; min-width: 0; }
-
-  .book-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    line-height: 1.3;
-  }
+  .book-title { font-size: 0.98rem; font-weight: 600; margin-bottom: 0.2rem; line-height: 1.3; }
   .book-title a { color: var(--text); text-decoration: none; }
   .book-title a:hover { color: var(--link); }
-  .src-icon { font-size: 0.85rem; margin-left: 3px; }
+  .src-icon { font-size: 0.82rem; margin-left: 3px; }
+  .book-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
 
-  .book-meta {
-    font-size: 0.82rem;
-    color: var(--muted);
-    margin-bottom: 0.6rem;
-  }
-
-  .topics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-    margin-bottom: 0.5rem;
-  }
+  .topics { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.45rem; }
   .topic {
     background: var(--pill-bg);
     color: var(--pill-text);
-    font-size: 0.76rem;
-    padding: 0.18rem 0.55rem;
+    font-size: 0.73rem;
+    padding: 0.15rem 0.5rem;
     border-radius: 10px;
     font-weight: 500;
   }
+  .audience { font-size: 0.83rem; color: #555; font-style: italic; margin-top: 0.3rem; }
+  .description { font-size: 0.83rem; color: #444; }
 
-  .audience {
-    font-size: 0.86rem;
-    color: #555;
-    font-style: italic;
-    margin-top: 0.3rem;
-  }
-  .description {
-    font-size: 0.86rem;
-    color: #444;
-  }
-
-  .book-footer {
-    margin-top: 0.6rem;
-    display: flex;
-    justify-content: flex-end;
-  }
+  .book-footer { margin-top: 0.5rem; display: flex; justify-content: flex-end; }
   .back-top {
-    font-size: 0.78rem;
-    color: #bbb;
-    text-decoration: none;
-    padding: 0.2rem 0.5rem;
-    border-radius: 6px;
-    transition: color .15s, background .15s;
+    font-size: 0.75rem; color: #bbb; text-decoration: none;
+    padding: 0.2rem 0.5rem; border-radius: 6px; transition: color .15s, background .15s;
   }
   .back-top:hover { color: var(--link); background: #f0f4ff; text-decoration: none; }
 
   /* ── States ── */
-  .loading, .error {
-    text-align: center;
-    padding: 3rem;
-    color: var(--muted);
-    font-size: 1.1rem;
-  }
+  .loading, .error { text-align: center; padding: 3rem; color: var(--muted); font-size: 1rem; }
   .error { color: #e53e3e; }
 
   /* ── Footer ── */
   footer {
-    text-align: center;
-    padding: 1.5rem;
-    color: var(--muted);
-    font-size: 0.83rem;
+    text-align: center; padding: 1.5rem;
+    color: var(--muted); font-size: 0.8rem;
     border-top: 1px solid #e2e8f0;
   }
   footer a { color: var(--muted); }
 
-  /* ── Responsive / Mobile ── */
+  /* ── Mobile ── */
   @media (max-width: 640px) {
-    header h1 { font-size: 1.05rem; }
-    #date-select { font-size: 0.82rem; padding: 0.4rem 0.55rem; }
+    #menu-btn    { display: block; }
+    #toc-desktop { display: none; }
 
-    main { padding: 0 0.6rem 2.5rem; margin-top: 1rem; }
+    header h1    { font-size: 1rem; }
+    #date-select { font-size: 0.8rem; max-width: 140px; padding: 0.38rem 0.5rem; }
 
-    .book-card {
-      flex-direction: column;
-      padding: 0.9rem;
-      gap: 0.8rem;
-    }
-    .book-cover {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 0.9rem;
-    }
+    main { padding: 0 0.65rem 2.5rem; margin-top: 1rem; }
+
+    .book-card { padding: 0.8rem; gap: 0.75rem; }
+    .book-cover { flex: 0 0 64px; }
     .book-cover img { width: 64px; height: 90px; }
-    .no-cover      { width: 64px; height: 90px; font-size: 1.5rem; }
-    .cover-rating  { font-size: 0.68rem; }
+    .no-cover   { width: 64px; height: 90px; font-size: 1.5rem; }
 
-    .book-title    { font-size: 0.95rem; }
-    .book-meta     { font-size: 0.78rem; }
-    .description, .audience { font-size: 0.82rem; }
-    .topic         { font-size: 0.72rem; }
-
+    .book-title { font-size: 0.92rem; }
+    .book-meta  { font-size: 0.76rem; }
+    .description, .audience { font-size: 0.8rem; }
+    .topic      { font-size: 0.7rem; }
     .cat-header h2 { font-size: 1.05rem; }
-    .sub-header    { font-size: 0.88rem; }
+    .sub-header    { font-size: 0.86rem; }
   }
 </style>
 </head>
 <body>
-
 <a id="top"></a>
 
 <header>
-  <div class="header-row">
+  <div class="header-bar">
     <h1>📚 New Books Digest</h1>
     <select id="date-select" onchange="loadDate(this.value)">
       <option>Yükleniyor…</option>
     </select>
+    <button id="menu-btn" onclick="toggleMenu()" aria-label="Kategoriler">☰</button>
   </div>
-  <nav id="toc"></nav>
+  <!-- Desktop TOC -->
+  <div id="toc-desktop"><nav class="toc-inner" id="toc"></nav></div>
+  <!-- Mobile drawer -->
+  <nav id="toc-drawer"></nav>
 </header>
 
 <main id="content">
@@ -304,60 +308,53 @@
 </footer>
 
 <script>
-  // Resolve base path — strips filename if present (works for /new-books/ and /new-books/index.html)
   const BASE = (() => {
     const p = location.pathname.replace(/\/[^/]*$/, '/');
     return location.origin + p;
   })();
 
-  async function json(path) {
+  async function fetchJson(path) {
     const r = await fetch(BASE + path + '?t=' + Date.now());
     if (!r.ok) throw new Error(`HTTP ${r.status}: ${path}`);
     return r.json();
   }
 
-  // ── Render ─────────────────────────────────────────────────────────────────
+  function toggleMenu() {
+    document.getElementById('toc-drawer').classList.toggle('open');
+  }
 
   function esc(s) {
     if (!s) return '';
     return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
   function renderBook(book) {
-    const stars  = book.rating ? `⭐ ${book.rating}/5 (${Number(book.ratings_count).toLocaleString('tr-TR')} oy)` : '';
-    const src    = {'groq': '🤖', 'openlibrary': '📖', 'google': ''}[book.description_source] || '';
+    const stars = book.rating
+      ? `⭐ ${book.rating}/5 (${Number(book.ratings_count).toLocaleString('tr-TR')} oy)` : '';
+    const src = {'groq':'🤖','openlibrary':'📖','google':''}[book.description_source] || '';
 
     const coverImg = book.thumbnail
       ? `<img src="${esc(book.thumbnail)}" alt="${esc(book.title)}" loading="lazy">`
       : `<div class="no-cover">📖</div>`;
-    const starsUnder = stars ? `<div class="cover-rating">${esc(stars)}</div>` : '';
-    const cover = `${coverImg}${starsUnder}`;
+    const cover = coverImg + (stars ? `<div class="cover-rating">${esc(stars)}</div>` : '');
 
-    const topicsHtml = (book.topics || [])
-      .map(t => `<span class="topic">${esc(t)}</span>`)
-      .join('');
-
+    const topicsHtml = (book.topics || []).map(t => `<span class="topic">${esc(t)}</span>`).join('');
     const bodyHtml =
       (book.description ? `<p class="description">${esc(book.description)}</p>` : '') +
-      (topicsHtml ? `<div class="topics">${topicsHtml}</div>` : '') +
-      (book.audience ? `<p class="audience">${esc(book.audience)}</p>` : '');
+      (topicsHtml       ? `<div class="topics">${topicsHtml}</div>` : '') +
+      (book.audience    ? `<p class="audience">${esc(book.audience)}</p>` : '');
 
-    const meta = [
-      book.authors,
-      book.published,
-    ].filter(Boolean).join(' · ');
+    const meta = [book.authors, book.published].filter(Boolean).join(' · ');
 
     return `
       <article class="book-card">
-        <a href="${esc(book.link || '#')}" target="_blank" rel="noopener" class="book-cover">${cover}</a>
+        <a href="${esc(book.link||'#')}" target="_blank" rel="noopener" class="book-cover">${cover}</a>
         <div class="book-body">
           <h3 class="book-title">
-            <a href="${esc(book.link || '#')}" target="_blank" rel="noopener">${esc(book.title)}</a>
-            ${src ? `<span class="src-icon" title="${src === '🤖' ? 'Groq AI özeti' : 'Open Library'}">${src}</span>` : ''}
+            <a href="${esc(book.link||'#')}" target="_blank" rel="noopener">${esc(book.title)}</a>
+            ${src ? `<span class="src-icon" title="${src==='🤖'?'Groq AI':'Open Library'}">${src}</span>` : ''}
           </h3>
           <p class="book-meta">${esc(meta)}</p>
           ${bodyHtml}
@@ -368,17 +365,14 @@
 
   function renderSubSection(label, books) {
     if (!books || !books.length) return '';
-    return `
-      <div class="sub-section">
-        <h3 class="sub-header">${label}</h3>
-        ${books.map(renderBook).join('')}
-      </div>`;
+    return `<div class="sub-section">
+      <h3 class="sub-header">${label}</h3>
+      ${books.map(renderBook).join('')}
+    </div>`;
   }
 
   function catTotal(cat) {
-    return (cat.books || []).length +
-           (cat.popular_recent || []).length +
-           (cat.popular_classic || []).length;
+    return (cat.books||[]).length + (cat.popular_recent||[]).length + (cat.popular_classic||[]).length;
   }
 
   function renderCategory(cat) {
@@ -394,30 +388,35 @@
       </section>`;
   }
 
-  function renderPage(data) {
-    const toc = document.getElementById('toc');
-    const content = document.getElementById('content');
-
-    toc.innerHTML = data.categories
+  function buildTocLinks(categories) {
+    return categories
       .filter(c => catTotal(c) > 0)
-      .map(c => `<a href="#${esc(c.slug)}">${esc(c.name)} <span class="count">${catTotal(c)}</span></a>`)
+      .map(c => `<a href="#${esc(c.slug)}" onclick="closeMobileMenu()">${esc(c.name)} <span class="cnt">${catTotal(c)}</span></a>`)
       .join('');
+  }
 
-    content.innerHTML = data.categories
+  function closeMobileMenu() {
+    document.getElementById('toc-drawer').classList.remove('open');
+  }
+
+  function renderPage(data) {
+    const links = buildTocLinks(data.categories);
+    document.getElementById('toc').innerHTML        = links;
+    document.getElementById('toc-drawer').innerHTML = links;
+    document.getElementById('content').innerHTML = data.categories
       .filter(c => catTotal(c) > 0)
       .map(renderCategory)
       .join('');
   }
 
-  // ── Data loading ───────────────────────────────────────────────────────────
-
   async function loadDate(file) {
     if (!file) return;
     document.getElementById('content').innerHTML = '<p class="loading">⏳ Yükleniyor…</p>';
     document.getElementById('toc').innerHTML = '';
+    document.getElementById('toc-drawer').innerHTML = '';
+    closeMobileMenu();
     try {
-      const data = await json('data/' + file);
-      renderPage(data);
+      renderPage(await fetchJson('data/' + file));
     } catch (e) {
       document.getElementById('content').innerHTML = `<p class="error">Hata: ${esc(e.message)}</p>`;
     }
@@ -425,21 +424,17 @@
 
   async function init() {
     try {
-      const manifest = await json('data/manifest.json');
+      const manifest = await fetchJson('data/manifest.json');
       const sel = document.getElementById('date-select');
-      sel.innerHTML = manifest
-        .map((m, i) =>
-          `<option value="${esc(m.file)}"${i === 0 ? ' selected' : ''}>` +
-          `${esc(m.date)} (${m.total} kitap)</option>`
-        ).join('');
+      sel.innerHTML = manifest.map((m, i) =>
+        `<option value="${esc(m.file)}"${i===0?' selected':''}>${esc(m.date)} (${m.total} kitap)</option>`
+      ).join('');
       if (manifest.length > 0) await loadDate(manifest[0].file);
     } catch (e) {
       document.getElementById('content').innerHTML =
-        `<p class="error">
-          Henüz digest verisi yok ya da yüklenemedi.<br>
-          GitHub Actions → <strong>Daily New Books Digest</strong> → <em>Run workflow</em> ile ilk çalıştırmayı yap.<br>
-          <small style="color:#aaa">(${esc(e.message)})</small>
-        </p>`;
+        `<p class="error">Henüz veri yok ya da yüklenemedi.<br>
+         GitHub Actions → <strong>Daily New Books Digest</strong> → <em>Run workflow</em><br>
+         <small>(${esc(e.message)})</small></p>`;
       document.getElementById('date-select').innerHTML = '<option>— veri yok —</option>';
     }
   }
