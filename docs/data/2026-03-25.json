@@ -17,13 +17,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=z1gOESCVTbkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "Siber Zeka Terimleri",
+            "Siber Zekâ Terimleri",
             "Uzman Sistemler",
             "Sinir Ağları",
-            "Yorumlama ve Oluşturma",
-            "Doğal Dil İşleme"
+            "Dil İşleme",
+            "Ses Tanıma ve Synthesis"
           ],
-          "audience": "Bu kitap, AI alanındaki uzmanlar ve öğrenciler için idealdir.",
+          "audience": "Bu kitap, siber zekâ alanında uzmanlaşmış veya bu alanda bilgi sahibi olmak isteyen kişiler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -36,12 +36,13 @@
           "ratings_count": 0,
           "thumbnail": "",
           "topics": [
-            "Bilgisayarlı Zekâ ve İnsan Kurumları",
-            "Bilgisayarlı Zekâ ve Toplum",
-            "İnsan Kurumları ve Bilgisayarlı Zekâ",
-            "Bilgisayarlı Zekâ ve İnsanlığın Geleceği"
+            "Sanal Zekâ ve Toplum",
+            "İnsan ve Makine İlişkileri",
+            "Bilgisayar Bilimi ve Teknolojisi",
+            "İnsan Merkezli Tasarım",
+            "Sosyal ve Ekonomik Etkiler"
           ],
-          "audience": "Bu kitap, bilgisayarlı zekâ ve insan kurumları arasındaki ilişkiler hakkında bilgi arayanlar için idealdir.",
+          "audience": "Bu kitap, teknoloji ve sosyal bilimlere ilgi duyanlar için idealdir.",
           "description_source": "groq"
         },
         {
@@ -54,13 +55,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=gzYi0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
-            "Sürdürülebilir AI",
-            "İnsan Performansını Optimizasyon",
-            "Modern Çağda AI ve İnsan Performansı",
-            "AI ve İnsan Performansı Çatışması",
-            "AI ve İnsan Performansı Uygulamaları"
+            "Sanal Zeka ve İnsanların Performansı",
+            "İnsan Performansı Optimizasyonu",
+            "Sanal Zeka Çözümleri",
+            "Bilgisayar Bilimi",
+            "İnsan ve Sanal Zeka İlişkisi"
           ],
-          "audience": "Bu kitap, AI ve insan performansı optimizasyonu alanındaki uzmanlar ve öğrenciler için idealdir.",
+          "audience": "Bu kitap, sanal zeka ve insan performansı optimizasyonu alanındaki uzmanlar ve öğrenciler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -73,13 +74,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=aM_jzwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
-            "Bireysel Performans Farklılıkları",
-            "Aydınlatma ve Verimlilik",
-            "Bilgisayar Zekası ve İnsanların Zekası",
-            "Kişiselleştirilmiş Performans Farklılıkları",
-            "Uygulama ve Geliştirme"
+            "Bireyselleştirilmiş Performans",
+            "Aydınlatma Teknolojileri",
+            "Bilişsel Performans",
+            "Bilişsel Zekâ",
+            "Bilişsel Performans Geliştirme"
           ],
-          "audience": "Bu kitap psikoloji ve nöroloji alanındaki araştırmacılar ve geliştiriciler için idealdir.",
+          "audience": "Bu kitap, psikoloji ve nöroloji alanındaki araştırmacılar ve bilişsel performansı geliştirmeye ilgi duyanlar için idealdir.",
           "description_source": "groq"
         },
         {
@@ -92,13 +93,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=WYxh0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
-            "AI Uygulamaları",
-            "İnsan Davranış Analizi",
-            "Neden Analizi",
-            "Yenilikçi Uygulamalar",
-            "Bilişsel Bilgi Analizi"
+            "Bilgisayarlı Zekânın Açıklanabilirliği",
+            "İnsan Davranışının Analizi",
+            "Doğal Ortamlarda Analiz",
+            "Yeni İfadeler ve Metodolojiler",
+            "Bilgisayarlı Zekâ'nın Uygulamaları"
           ],
-          "audience": "Bu kitap, AI ve insan davranış analizi alanındaki uzmanlar ve akademisyenler için idealdir.",
+          "audience": "Bu kitap, insan davranış analizi ve açıklanabilir bilgisayarlı zekâ uygulamaları ile ilgilenen araştırmacılar ve uzmanlar için idealdir.",
           "description_source": "groq"
         }
       ]
@@ -117,12 +118,12 @@
           "ratings_count": 9,
           "thumbnail": "https://books.google.com/books/content?id=AJuowQmtbU4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "Robot Savaşçılığın Gelişimi",
-            "Irak Savaşı'nda Robotların Kullanımı",
+            "Robotik Savaşın Gelişimi",
+            "Irak Savaşı'nda Robotik Savaşın Kullanımı",
             "Gelişmiş Teknolojiler",
             "Bilim Kurgu Yazarları ile Pentagon'un Gizli Danışmanlığı"
           ],
-          "audience": "Bu kitap, askeri strateji ve teknolojiden ilginç olanlar için idealdir.",
+          "audience": "Bu kitap, savaş teknolojisi, robotik savaş ve gelecekteki savaşın muhtemel şekilleri ile ilgilenen okuyucular için idealdir.",
           "description_source": "groq"
         },
         {
@@ -135,11 +136,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=3YJyEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "Microkontrolörlerin Temel Konseptleri",
-            "Microkontrolörlerin Kullanımı",
-            "İmalat ve Kontrol Sistemleri"
+            "Bilgisayar Mühendisliği",
+            "Elektrik Mühendisliği",
+            "Kontrol Sistemleri",
+            "Araç Kontrolü",
+            "Sensör Teknolojileri"
           ],
-          "audience": "Bu kitap, pratik bilim ve mühendisler için idealdir.",
+          "audience": "Bu kitap, pratik bilim insanları ve mühendisler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -152,13 +155,13 @@
           "ratings_count": 1,
           "thumbnail": "https://books.google.com/books/content?id=BXSdPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
-            "Bilgisayar Bilimi",
-            "Gelişmiş İnsansı Robotlar",
             "Bilgisayarlı Zekâ",
+            "Teknoloji",
             "İnsan-Makine Birleşimi",
-            "Bilgisayarlı İnsanlık"
+            "Bilgisayarlı İnteligens",
+            "Gelecek"
           ],
-          "audience": "Bu kitap teknoloji ve bilim meraklıları için idealdir.",
+          "audience": "Bu kitap, teknoloji ve gelecekle ilgilenen kişiler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -172,12 +175,12 @@
           "thumbnail": "https://books.google.com/books/content?id=ZRKMsqOIv60C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
             "Genel Zekâ",
-            "Aydınlanmış Makine",
             "Düşünme Makinesi",
             "Genel Zekâ ve AI",
-            "Dünya Zekâsı"
+            "Düşünme Makinesi Geliştirme",
+            "Zekâ ve Bilgisayarlar"
           ],
-          "audience": "Bu kitap, genel zekâ ve AI alanındaki uzmanlar ve öğrenciler için idealdir.",
+          "audience": "Bu kitap, genel zekâ ve AI alanındaki uzmanlar ve araştırmacılar için idealdir.",
           "description_source": "groq"
         },
         {
@@ -190,13 +193,11 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=TuWQx58ZnPsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "Evren",
+            "Kozmos",
             "İnsan Ölümsüzlüğü",
-            "Gelecekte İnsan Değerlendirmesi",
-            "Biz Kimiz?",
-            "Nerdeyiz?"
+            "Gelecekteki İnsanların Değerlendirmesi"
           ],
-          "audience": "Bu kitap, evren, insan ölümsüzlüğü ve gelecekteki insan değerlendirmesi konularını incelemek isteyenler için idealdir.",
+          "audience": "Bu kitap, bilim ve felsefe meraklıları için idealdir.",
           "description_source": "groq"
         }
       ]
@@ -215,13 +216,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=Q1O6CgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "Bilinçbilim",
-            "Kognitif Bilim",
-            "Sanal Zekâ",
-            "Beynin Esasları",
-            "İnsan Zekâsı"
+            "Bilinç Bilimi",
+            "Cognitive Bilim",
+            "Sanal Zeka",
+            "Beşerî Zekâ",
+            "Bilişsel Bilim"
           ],
-          "audience": "Bu kitap, zekâ bilimine ilgi duyan akademisyenler, araştırmacılar ve öğrenciler için idealdir.",
+          "audience": "Bu kitap, zekâ bilimi ve teknolojisine ilgi duyan akademisyenler, araştırmacılar ve öğrenciler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -235,12 +236,11 @@
           "thumbnail": "https://books.google.com/books/content?id=LIxRrcHllGcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
             "Bilgisayar Bilimi",
-            "Merkezi Bilgisayar Tesisleri",
+            "Merkezi Bilgi İşlem Tesisleri",
             "Mühendislik",
-            "Araştırmada Bilgisayar Donanımı",
-            "Bilgisayarlı Araştırmalar"
+            "Araştırmaya İlişkin Bilgisayar Ekipmanları"
           ],
-          "audience": "Bu kitap araştırmacılar ve mühendisler için idealdir.",
+          "audience": "Bu kitap akademik araştırmacılar ve bilgisayar bilimi, merkezi bilgi işlem tesisleri ve mühendislik alanındaki uzmanlar için idealdir.",
           "description_source": "groq"
         },
         {
@@ -253,13 +253,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=67iaAAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
-            "Bilgisayar Bilimi'nin Polimer Bilimine Etkisi",
-            "Polimer Biliminde Otomasyon ve Modelleme",
-            "Polimer Reaksiyonları ve İşlem Modellenmesi",
-            "Polimerizasyon Kinetiği ve İşlem Modellenmesi",
-            "Polimerizasyon Processleri"
+            "Bilgisayar Bilimi'nin Polimer Bilimine Etkileri",
+            "Aygıt Otomasyonu",
+            "Matematiksel Modellenme ve Optimizasyon",
+            "Karma Reaksiyonları ve Cure Süreci Modellemesi",
+            "Polimerizasyon Kinetiği ve Süreç Modellemesi"
           ],
-          "audience": "Bu kitap polimer bilimine ilgi duyan araştırmacılar ve mühendisler için idealdir.",
+          "audience": "Bu kitap, polimer bilimine ilgi duyan araştırmacılar ve mühendisler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -272,12 +272,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=5kI6AQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
-            "Bilgisayar ve Hukuk Alanında Uygulamalar",
-            "Bilgisayar Hukuku ve Uygulamaları",
-            "Bilgisayar ve Hukuk Üzerine Düşünceler",
-            "Bilgisayar Hukuku ve Yasal Uygulamalar"
+            "Bilgisayar Hukuku",
+            "Hukuki Sorumluluk",
+            "Bilgi Teknolojileri Hukuku",
+            "Bilgisayarlar ve Hukuk",
+            "Bilgisayar Hukuku Uygulamaları"
           ],
-          "audience": "Bu kitap bilgisayar hukuku alanında uzmanlaşmış veya ilgilenen profesyoneller için idealdir.",
+          "audience": "Bu kitap bilgisayar hukuku uzmanları, öğrencileri ve bu alanla ilgilenen herkes için idealdir.",
           "description_source": "groq"
         },
         {
@@ -290,13 +291,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=bns_AQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
+            "Bilişim Teknolojileri",
             "Bilgisayar Bilimi",
-            "Paralel İşlem",
-            "Veri İşleme",
+            "Paralel Bellek",
             "Bilgisayar Ağları",
-            "Gelişmiş Algoritmalar"
+            "Veri İşleme"
           ],
-          "audience": "Bu kitap bilgisayar biliminde uzmanlaşmış öğrenciler ve araştırmacılar için idealdir.",
+          "audience": "Bilgisayar bilimi ve bilişim teknolojileri alanındaki uzmanlar ve öğrenciler için idealdir.",
           "description_source": "groq"
         }
       ]
@@ -315,13 +316,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=0XGODwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "Yahudi Modernleşmesi",
-            "Rus Yahudileri",
-            "Modern Dünya Adaptasyonu",
-            "20. Yüzyıl Yahudi Tarihi",
-            "Modernlik Anlayışı"
+            "Modern Çağ ve Yahudiler",
+            "Rusya Yahudileri'nin Dramı",
+            "Emek ve Soydaşlar",
+            "Modern Dünya ve Model Olmak",
+            "20. Yüzyıl ve Yahudi Yüzyılı"
           ],
-          "audience": "Bu kitap, tarih ve sosyoloji alanındaki uzmanlar ve öğrenciler için idealdir.",
+          "audience": "Bu kitap, modern dünya ile ilgili düşünen ve araştıranlar için idealdir.",
           "description_source": "groq"
         },
         {
@@ -334,13 +335,12 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=sLkJBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "Fırsatlara Yönelik Yenilik",
-            "Risk Yönetimi",
-            "Yenilikçi Yapılar",
-            "Stratejiler",
-            "Personel ve Ödül"
+            "Fırsatların Pratikliği",
+            "Riskler ve Stratejiler",
+            "Organizasyonlar ve Personel",
+            "Yönetim ve Ödüllendirme"
           ],
-          "audience": "Bu kitap iş dünyasındaki girişimciler ve yöneticiler için idealdir.",
+          "audience": "Bu kitap girişimciler, işadamları ve yöneticiler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -354,12 +354,11 @@
           "thumbnail": "https://books.google.com/books/content?id=h2miy78PR-QC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
             "Silikon Vadisi'nin Arkasındaki Dünya",
-            "Yahoo'nun Kuruluşu",
-            "Silikon Vadisi'nin Renkli İnsanları",
-            "Teknoloji Dünyası",
-            "Girişimcilik"
+            "Yahoo'nun Kurucuları",
+            "Teknoloji Dünyasındaki Renkli İnsanlar",
+            "Silikon Vadisi'nin Renkli Yüzleri"
           ],
-          "audience": "Bu kitap, teknoloji sektöründe çalışanlar ve bu sektörle ilgilenenler için idealdir.",
+          "audience": "Bu kitap, teknoloji sektörüne ilgi duyanlar ve Silikon Vadisi'nin gizli dünyasını keşfetmek isteyenler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -372,13 +371,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=vKYsEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "Strateji Geliştirme",
-            "İş Hayatında Başarı",
-            "Yönetim ve Liderlik",
-            "Karar Verme",
-            "Girişimcilik"
+            "Stratejik Planlama",
+            "İş Hayatı",
+            "Mali Uyum",
+            "Kariyer Gelişimi",
+            "Sürekli Öğrenme"
           ],
-          "audience": "Bu kitap, kariyer gelişimi ve iş başarısı için motive edilmiş ve hedef kuran bireylere hitap eder.",
+          "audience": "Bu kitap, iş hayatı ve kariyer gelişimi için hedef kitle olan girişimciler ve iş insanları için idealdir.",
           "description_source": "groq"
         },
         {
@@ -391,12 +390,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=iyAbTjqVXgkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "Startup Başarı Hikayeleri",
-            "Oluşum Öyküleri",
-            "Girişimcilik Uygulaması",
-            "Girişimci Başarı Yolları"
+            "Girişimcilik",
+            "Başarı Yöntemi",
+            "Kurucu Anıları",
+            "Öğretiler",
+            "Başarı Stratejileri"
           ],
-          "audience": "Bu kitap girişimciler, iş kurucuları ve yeni iş fikirleri geliştirmek isteyenler için idealdir.",
+          "audience": "Bu kitap girişimciler ve yenilikçi düşünceye sahip kişiler için idealdir.",
           "description_source": "groq"
         }
       ]
@@ -415,11 +415,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=vOMOAQAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
-            "Willow ve Poplar Ağaçlarının Zararlıları",
-            "Böcekler ve Ağaç Hastalıkları",
-            "Willow ve Poplar Ağaçlarının Koruma Yöntemleri"
+            "Kırmızılardan Korunma Yöntemleri",
+            "Popüler Ağaç Hastalıkları",
+            "Kırmızı Çürük Hastalığı",
+            "Popüler Ağaç Zararlıları",
+            "Popüler Ağaç Koruma Yöntemleri"
           ],
-          "audience": "Bu kitap, orman ürünleri endüstrisi, ziraat mühendisliği ve biyoloji alanındaki uzmanlar ve öğrenciler için idealdir.",
+          "audience": "Bu kitap, orman ürünleri endüstrisi, arazi yönetimi ve ağaç yetiştiriciliği alanındaki uzmanlar ve öğrenciler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -433,10 +435,12 @@
           "thumbnail": "https://books.google.com/books/content?id=bdUe4zli8s8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
             "Unterhaltungsliteratur",
-            "Dieter Petzold",
-            "Eberhard Späth"
+            "Kitap Yönetimi",
+            "Yazarlar",
+            "Kitaplar",
+            "Edebiyat"
           ],
-          "audience": "Bu kitap edebi zevk isteyenler için idealdir.",
+          "audience": "Bu kitap okuma tutkunları ve edebiyatseverler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -449,13 +453,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=lDG2TCuropEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "Çin Halk Cumhuriyeti Kültürü",
-            "Popüler Kültür",
-            "Siyasi Kültür",
-            "Avant-Garde Kültür",
-            "Çin Kültür Çalışmaları"
+            "Popüler Kültürün Politikleşmesi",
+            "Çin'in Kültür Politikası",
+            "Çin'de Sanat ve Müzik",
+            "Devrimci Müzeler ve Kültür",
+            "Çin Kültür İletişimi"
           ],
-          "audience": "Bu kitap Çin kültürü ve kültürel çalışmalara ilgi duyan akademisyenler ve araştırmacılar için idealdir.",
+          "audience": "Bu kitap Çin kültürü ve politikası ile ilgilenen akademisyenler, araştırmacılar ve kültür meraklıları için idealdir.",
           "description_source": "groq"
         },
         {
@@ -468,13 +472,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=KBcLAAAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
-            "Kitap Edebiyatı ve Toplum",
-            "Sosyal Değişim ve Kültür",
-            "Yazar ve Okur İlişkisi",
-            "Kitapların Toplumda Rolü",
-            "Literatür ve Toplum İlişkisi"
+            "Kitapçılık ve yayıncılık",
+            "Kitap okuryazarlığı",
+            "Sosyal medya ve kültür",
+            "Kitaplar ve toplum",
+            "Yeni medya ve edebiyat"
           ],
-          "audience": "Bu kitap, edebiyat ve toplum ilişkisi ile ilgilenen akademik ve profesyonel kişiler için idealdir.",
+          "audience": "Bu kitap, edebiyat ve kültür alanındaki araştırmacılar, yazarlar ve okurlar için idealdir.",
           "description_source": "groq"
         },
         {
@@ -487,12 +491,12 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=XWPYAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
-            "Masalların Yaşam Boyu Yardımcısı Olması",
-            "Masalların Reklam Aracı Olması",
-            "Masalların Komik Hikaye Formu",
-            "Masalların Animasyon Formu"
+            "Märchen'in Yaşam Yöntemi",
+            "Märchen'in Reklamcılığı",
+            "Märchen'in Komik Hali",
+            "Märchen'in Animasyon Hali"
           ],
-          "audience": "Bu kitap, masalların çeşitli yönleriyle ilgilenen ve bu konuya derinlemesine yaklaşmak isteyen okuyucular için idealdir.",
+          "audience": "Bu kitap, halk hikayeleri ve çocuklar için idealdir.",
           "description_source": "groq"
         }
       ]
@@ -512,11 +516,10 @@
           "thumbnail": "https://books.google.com/books/content?id=-3ACAAAAYAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
             "Hayat Hikayesi",
-            "Özgeçmiş",
-            "Yaşam Öyküsü",
-            "James Marion Sims'in Hayatı"
+            "Biyografi",
+            "Tarihsel Öneme Sahip Kitap"
           ],
-          "audience": "Bu kitap, biyografi severler ve yaşam hikayeleri ile ilgilenenler için idealdir.",
+          "audience": "Bu kitap, tarihseverler ve biyografi severler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -530,12 +533,12 @@
           "thumbnail": "https://books.google.com/books/content?id=t0Mh0yOH5EsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
             "Aile Hekimliği İlkeleri",
-            "Toplumda Primar Tedavi",
+            "Toplumda İlk Hekimlik",
             "Klinik Uygulamalar",
-            "Hasta Bakımı Optimizasyonu",
-            "ABFM Sınav Hazırlığı"
+            "Evidans Tabanlı Uygulamalar",
+            "ABFM Tercihleri"
           ],
-          "audience": "Bu kitap aile hekimliği uzmanlığı için resident ve uygulayıcı hekimler için idealdir.",
+          "audience": "Bu kitap aile hekimliği uzmanları ve pratisyen hekimler için idealdir.",
           "description_source": "groq"
         },
         {
@@ -549,12 +552,12 @@
           "thumbnail": "https://books.google.com/books/content?id=6S9rAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           "topics": [
             "19. Yüzyıl Amerikan Tıp Tarihi",
-            "Tıp Sektlerinden Bilime Geçiş",
-            "Amerikan Tipleri",
-            "Tıp Tarihi",
-            "Tıp Bilimi"
+            "Tıp Sektörünün Gelişimi",
+            "Amerikan Tıp Bilimi",
+            "Tıp Tarihçileri",
+            "Tıpın Bilimselleşmesi"
           ],
-          "audience": "Bu kitap, tıp tarihine ve 19. yüzyılın Amerikan tıp dünyasına ilgi duyanlar için idealdir.",
+          "audience": "Bu kitap, tıp tarihçileri, tıp profesyonelleri ve tıp öğrencileri için idealdir.",
           "description_source": "groq"
         },
         {
@@ -567,13 +570,13 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=q3MGMTYAfu4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "İnsan Saçlarının Kimyasal ve Fiziksel Özellikleri",
-            "Kozmetik Sanayi",
-            "Forensik Bilimler",
-            "Biyomedikal Araştırmalar",
-            "Saçların Kimyasal ve Fiziksel Davranışı"
+            "Sağlık Bilimleri",
+            "Kimya",
+            "Fizik",
+            "Kozmetoloji",
+            "Forensik Bilimler"
           ],
-          "audience": "Bu kitap, kozmetik sanayi, forensik bilimciler ve biyomedikal araştırmacılar için idealdir.",
+          "audience": "Bu kitap, kozmetik endüstrisi, forensik bilimciler ve biyomedikal araştırmacılar için idealdir.",
           "description_source": "groq"
         },
         {
@@ -586,12 +589,12 @@
           "ratings_count": 0,
           "thumbnail": "https://books.google.com/books/content?id=bvnZ_xn60bwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           "topics": [
-            "20. Başkanın Siyasi Kariyeri",
+            "Amerika'nın 20. Başkanı'nın Siyasi Kariyeri",
             "Sivil Savaş Kahramanı",
-            "Korrupt Otoriteye Karşı Savaşımlar",
+            "Korrupt Otoriteye Karşı Savaş",
             "Alexander Graham Bell'in Kurtarma Girişimi"
           ],
-          "audience": "Bu kitap, tarih meraklıları ve siyasi konulara ilgi duyanlar için idealdir.",
+          "audience": "Bu kitap, tarih ve siyaset konularına ilgi duyanlar için idealdir.",
           "description_source": "groq"
         }
       ]
