@@ -374,14 +374,17 @@ def build_issue_body(data: dict, pages_url: str) -> str:
     ]
 
     def book_table(books: list[dict]) -> list[str]:
-        rows = ["| Kitap | Yazar | Yıl |", "|------|-------|-----|"]
+        rows = ["| Kitap | Yazar | Yıl | Puan |", "|------|-------|-----|------|"]
         for b in books:
-            year = b["published"][:4] if b.get("published") else "—"
-            link = b.get("link", "")
-            title = b["title"].replace("|", "\\|")
+            year   = b["published"][:4] if b.get("published") else "—"
+            link   = b.get("link", "")
+            title  = b["title"].replace("|", "\\|")
             author = b["authors"].replace("|", "\\|")
-            cell = f"[{title}]({link})" if link else title
-            rows.append(f"| {cell} | {author} | {year} |")
+            cell   = f"[{title}]({link})" if link else title
+            rating = b.get("rating", 0)
+            count  = b.get("ratings_count", 0)
+            puan   = f"⭐ {rating}/5 ({count:,})" if rating else "—"
+            rows.append(f"| {cell} | {author} | {year} | {puan} |")
         return rows
 
     for cat in data["categories"]:
