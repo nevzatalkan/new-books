@@ -35,10 +35,7 @@
   header {
     background: var(--header-bg);
     color: #fff;
-    padding: 1.5rem 1rem 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    padding: 1.2rem 1rem 0.8rem;
     box-shadow: 0 2px 12px rgba(0,0,0,.3);
   }
   .header-row {
@@ -47,51 +44,53 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 1rem;
+    gap: 0.7rem;
   }
-  header h1 { font-size: 1.4rem; flex: 1 1 auto; }
+  header h1 { font-size: 1.2rem; flex: 1 1 auto; }
 
   #date-select {
     background: rgba(255,255,255,.12);
     color: #fff;
     border: 1px solid rgba(255,255,255,.25);
     border-radius: 8px;
-    padding: 0.4rem 0.7rem;
-    font-size: 0.9rem;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.88rem;
     cursor: pointer;
+    max-width: 100%;
   }
   #date-select option { background: #16213e; }
 
   #toc {
     max-width: 960px;
-    margin: 0.7rem auto 0;
+    margin: 0.6rem auto 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.35rem;
+    padding-bottom: 0.6rem;
   }
   #toc a {
     background: rgba(255,255,255,.13);
     color: #fff;
     text-decoration: none;
-    padding: 0.25rem 0.7rem;
+    padding: 0.3rem 0.75rem;
     border-radius: 20px;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     transition: background .15s;
     white-space: nowrap;
   }
-  #toc a:hover { background: rgba(255,255,255,.28); }
+  #toc a:hover, #toc a:active { background: rgba(255,255,255,.28); }
   #toc .count {
     background: rgba(255,255,255,.22);
     border-radius: 10px;
     padding: 0 5px;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
   }
 
   /* ── Main ── */
   main {
     max-width: 960px;
-    margin: 1.8rem auto;
-    padding: 0 1rem 3rem;
+    margin: 1.4rem auto;
+    padding: 0 0.85rem 3rem;
   }
 
   /* ── Category section ── */
@@ -249,10 +248,35 @@
   }
   footer a { color: var(--muted); }
 
-  /* ── Responsive ── */
-  @media (max-width: 520px) {
-    .book-card { flex-direction: column; }
-    .book-cover { flex-direction: row; justify-content: center; }
+  /* ── Responsive / Mobile ── */
+  @media (max-width: 640px) {
+    header h1 { font-size: 1.05rem; }
+    #date-select { font-size: 0.82rem; padding: 0.4rem 0.55rem; }
+
+    main { padding: 0 0.6rem 2.5rem; margin-top: 1rem; }
+
+    .book-card {
+      flex-direction: column;
+      padding: 0.9rem;
+      gap: 0.8rem;
+    }
+    .book-cover {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+    .book-cover img { width: 64px; height: 90px; }
+    .no-cover      { width: 64px; height: 90px; font-size: 1.5rem; }
+    .cover-rating  { font-size: 0.68rem; }
+
+    .book-title    { font-size: 0.95rem; }
+    .book-meta     { font-size: 0.78rem; }
+    .description, .audience { font-size: 0.82rem; }
+    .topic         { font-size: 0.72rem; }
+
+    .cat-header h2 { font-size: 1.05rem; }
+    .sub-header    { font-size: 0.88rem; }
   }
 </style>
 </head>
