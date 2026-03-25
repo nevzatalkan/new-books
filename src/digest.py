@@ -40,7 +40,7 @@ OL_HEADERS = {"User-Agent": "new-books-digest/1.0 (github.com/nevzatalkan/new-bo
 # ── Google Books ───────────────────────────────────────────────────────────────
 
 def _fetch(query: str) -> list[dict]:
-    """Single Google Books API call, returns raw book dicts."""
+    """Single Google Books API call, returns raw book dicts. Retries up to 3 times on failure."""
     params = {
         "q":           query,
         "orderBy":     "newest",
@@ -49,12 +49,20 @@ def _fetch(query: str) -> list[dict]:
         "langRestrict": "en",
     }
     url = "https://www.googleapis.com/books/v1/volumes?" + urllib.parse.urlencode(params)
-    try:
-        with urllib.request.urlopen(url, timeout=15) as resp:
-            return json.loads(resp.read()).get("items", [])
-    except Exception as exc:
-        print(f"[WARN] API error for '{query}': {exc}")
-        return []
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(url, timeout=15) as resp:
+                items = json.loads(resp.read()).get("items", [])
+                if items or attempt == 2:
+                    return items
+                # Empty result on first/second attempt — retry after a short wait
+                print(f"[WARN] Empty result for '{query}' (attempt {attempt+1}/3), retrying...")
+                time.sleep(2 ** attempt)
+        except Exception as exc:
+            print(f"[WARN] API error for '{query}' (attempt {attempt+1}/3): {exc}")
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+    return []
 
 
 def google_books_search(queries: list[str], want: int) -> list[dict]:
