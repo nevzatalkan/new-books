@@ -1,5 +1,12 @@
 [
   {
+    "date": "1 April 2026",
+    "date_iso": "2026-04-01",
+    "file": "2026-04-01.json",
+    "total": 0,
+    "categories": 0
+  },
+  {
     "date": "31 March 2026",
     "date_iso": "2026-03-31",
     "file": "2026-03-31.json",
