@@ -3,7 +3,7 @@ name: Daily New Books Digest
 on:
   # Every day at 09:00 UTC
   schedule:
-    - cron: "0 9 * * *"
+    - cron: "10 6 * * *"
 
   # Manual trigger (test from GitHub Actions tab)
   workflow_dispatch:
